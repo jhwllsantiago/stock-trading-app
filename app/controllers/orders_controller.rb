@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show edit update destroy ]
+  before_action :set_stock
+  before_action :authenticate_user!, only: %i[ new create edit update destroy ]
 
   # GET /orders or /orders.json
   def index
@@ -22,6 +24,8 @@ class OrdersController < ApplicationController
   # POST /orders or /orders.json
   def create
     @order = Order.new(order_params)
+    @order.user = current_user
+    @order.stock = @stock
 
     respond_to do |format|
       if @order.save
@@ -61,6 +65,10 @@ class OrdersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])
+    end
+
+    def set_stock
+      @stock = Stock.find(params[:stock_id])
     end
 
     # Only allow a list of trusted parameters through.

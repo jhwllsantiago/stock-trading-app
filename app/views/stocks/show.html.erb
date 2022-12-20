@@ -1,10 +1,16 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @stock %>
+<p>There are <span><%= @stock_buy.count %></span> Buy orders for this stock</p>
+<% @stock_buy.each do |order| %>
+  <span><%= order.quantity %></span>
+<% end %>
+
+<p>There are <span><%= @stock_sell.count %></span> Sell orders for this stock</p>
+<% @stock_sell.each do |order| %>
+  <span><%= order.quantity %></span>
+<% end %>
 
 <div>
-  <%= link_to "Edit this stock", edit_stock_path(@stock) %> |
   <%= link_to "Back to stocks", stocks_path %>
-
-  <%= button_to "Destroy this stock", @stock, method: :delete %>
 </div>

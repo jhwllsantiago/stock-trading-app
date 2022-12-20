@@ -8,6 +8,8 @@ class StocksController < ApplicationController
 
   # GET /stocks/1 or /stocks/1.json
   def show
+    @stock_buy = @stock.orders.where(action: 0, status: 0)
+    @stock_sell = @stock.orders.where(action: 1, status: 0)
   end
 
   # GET /stocks/new
