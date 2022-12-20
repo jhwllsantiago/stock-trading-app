@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :first_name, :last_name, presence: true
   enum role: [:trader, :admin]
+  has_many :orders
 end
