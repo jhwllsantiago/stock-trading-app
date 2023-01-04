@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  action: 1
+  status: 1
+  user: one
+  stock: one
+  quantity: 1
+
+two:
+  action: 1
+  status: 1
+  user: two
+  stock: two
+  quantity: 1
