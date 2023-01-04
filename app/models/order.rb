@@ -3,4 +3,5 @@ class Order < ApplicationRecord
   enum status: [:pending, :success, :expired]
   belongs_to :user
   belongs_to :stock
+  validates :action, :quantity, :price, presence: true
 end

@@ -12,6 +12,6 @@ users = User.create([
   ])
 stocks = Stock.create([{ price: 15.12, company: "ABC Company" }, { price: 10.11, company: "DEF Company" }, { price: 1.01, company: "GHI Company" }])
 Order.create([
-  { action: 0, status: 0, quantity: 2, user: users.first, stock: stocks.first },
-  { action: 0, status: 1, quantity: 3, user: users.first, stock: stocks.last } 
+  { action: 0, status: 0, quantity: 2, price: 15.06, user: users.first, stock: stocks.first },
+  { action: 0, status: 1, quantity: 3, price: 0.7, user: users.first, stock: stocks.last } 
   ])
