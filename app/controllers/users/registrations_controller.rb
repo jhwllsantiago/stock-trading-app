@@ -3,16 +3,48 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
+  # before_action :authenticate_user!, :redirect_unless_admin,  only: [:new, :create]
+  # skip_before_action :require_no_authentication
+  skip_before_action :require_no_authentication, only: [:new, :create]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    if !current_user || current_user.admin?
+      super
+    else
+      redirect_to root_path
+    end
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    if !current_user || current_user.admin?
+      build_resource(sign_up_params)
+
+    resource.save
+    yield resource if block_given?
+    if resource.persisted?
+      if resource.active_for_authentication?
+        notice = current_user && current_user.admin? ? :signed_up_through_admin : :signed_up
+        set_flash_message! :notice, notice
+        sign_up(resource_name, resource)
+        respond_with resource, location: after_sign_up_path_for(resource)
+      else
+        set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
+        expire_data_after_sign_in!
+        respond_with resource, location: after_inactive_sign_up_path_for(resource)
+      end
+    else
+      clean_up_passwords resource
+      set_minimum_password_length
+      respond_with resource
+    end
+
+  
+    else
+      redirect_to root_path
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -45,9 +77,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
   end
 
-  # If you have extra params to permit, append them to the sanitizer.
+  # # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name])
+  end
+
+  def sign_up(resource_name, resource)
+    true
   end
 
   # The path used after sign up.
