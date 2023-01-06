@@ -1,36 +1,76 @@
-<div class="landing-page">
+<div class=" container landing-page">
   <nav class="navbar fixed-top navbar-expand-md">
-    <div class="container d-flex">
-      <p>TRADE</p>
-      <p>FINANCE</p>
-      <p>PRICES</p>
-      <p>ADVISORY</p>
+    <div class="container-fluid nav-container">
+      <div class="container-fluid nav-items-left">
+        <p>TRADE</p>
+        <p>FINANCE</p>
+        <p>PRICES</p>
+        <p>ADVISORY</p>
+      </div>
+      <div class="container-fluid nav-logo-container">
+        <p><strong>ATLAS</strong></p>
+        <%= image_tag("ai3.png", :class => "nav-logo") %>
+        <p class="index"><strong>INDEX</strong></p>
+      </div>
+      <div class="nav-items-right">
+        <p>LOG IN</p>
+        <button>
+          <p>REGISTER</p>
+        </button>
+        <button></button>
+        <img/>
+      </div>
     </div>
   </nav>
-  <div>Log in</div>
-
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <main class="container-fluid main-container">
+    <%= video_tag("analysis.mp4", :class => "bg-video", :autoplay => true, :loop => true, :muted => 'muted') %>
+    <div class="container-fluid stock-container">
+      <%= image_tag("apple.png", :class => "stock-logo") %>
     </div>
-
-    <div class="field">
-      <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "current-password" %>
-    </div>
-
-    <% if devise_mapping.rememberable? %>
-      <div class="field">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
+  </main>
+  <footer class="container-fluid footer-container">
+    <div class="footer-item">
+      <div class="footer-item-links">
+        <h2>ABOUT US</h2>
+        <p>About</p>
+        <p>Legal</p>
+        <p>Careers</p>
+        <p>Terms and privacy</p>
       </div>
-    <% end %>
-
-    <div class="actions">
-      <%= f.submit "Log in" %>
+      <div class="footer-item-links">
+        <h2>SEVICES</h2>
+        <p>Exchange</p>
+        <p>Trade</p>
+        <p>OTC</p>
+      </div>
+      <div class="footer-item-links">
+        <h2>SUPPORT</h2>
+        <p>Help Desk</p>
+        <p>FAQs</p>
+        <p>Feedback</p>
+      </div>
+      <div class="footer-item-links">
+        <h2>SUBSIDIARIES</h2>
+        <p>ViCash</p>
+        <p>7-Evelyn</p>
+        <p>McJolliKing</p>
+      </div>
+      <div class="footer-item-links">
+        <h2>RESOURCES</h2>
+        <p>Prices</p>
+        <p>Blog</p>
+        <p>Press</p>
+      </div>
     </div>
-  <% end %>
-
-  <%= render "devise/shared/links" %>
+    <div class="footer-media">
+      <h2>STAY CONNECTED</h2>
+      <p>SIGN UP FOR THE LATEST NEWS AND UPDATES</p>
+      <div class="footer-email">
+        <input type="email"/>
+        <button>
+          <%= image_tag("send.png", :class => "send-logo") %>
+        </button>
+      </div>
+    </div>
+  </footer>
 </div>
