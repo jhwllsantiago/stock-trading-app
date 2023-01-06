@@ -25,7 +25,41 @@
   <main class="container-fluid main-container">
     <%= video_tag("analysis.mp4", :class => "bg-video", :autoplay => true, :loop => true, :muted => 'muted') %>
     <div class="container-fluid stock-container">
-      <%= image_tag("apple.png", :class => "stock-logo") %>
+      <div class="stock-name">
+        <%= image_tag("apple.png", :class => "stock-logo") %>
+        <div>
+          <h2>Apple</h2>
+          <p>AAPL<p>
+        </div>
+      </div>
+      <div class="stock-name">
+        <%= image_tag("msft.png", :class => "stock-logo") %>
+        <div>
+          <h2>Microsoft</h2>
+          <p>MSFT<p>
+        </div>
+      </div>
+      <div class="stock-name">
+        <%= image_tag("google.png", :class => "stock-logo") %>
+        <div>
+          <h2>Google</h2>
+          <p>GOOG<p>
+        </div>
+      </div>
+      <div class="stock-name">
+        <%= image_tag("amazon.png", :class => "stock-logo") %>
+        <div>
+          <h2>Amazon</h2>
+          <p>AMZN<p>
+        </div>
+      </div>
+      <div class="stock-name">
+        <%= image_tag("visa3.png", :class => "stock-logo visa") %>
+        <div>
+          <h2>Visa</h2>
+          <p>V<p>
+        </div>
+      </div>
     </div>
   </main>
   <footer class="container-fluid footer-container">
@@ -38,7 +72,7 @@
         <p>Terms and privacy</p>
       </div>
       <div class="footer-item-links">
-        <h2>SEVICES</h2>
+        <h2>SERVICES</h2>
         <p>Exchange</p>
         <p>Trade</p>
         <p>OTC</p>
@@ -66,10 +100,28 @@
       <h2>STAY CONNECTED</h2>
       <p>SIGN UP FOR THE LATEST NEWS AND UPDATES</p>
       <div class="footer-email">
-        <input type="email"/>
+        <input type="email" placeholder="Email"/>
         <button>
           <%= image_tag("send.png", :class => "send-logo") %>
         </button>
+      </div>
+      <h2>FOLLOW US</h2>
+      <div class="footer-socials">
+        <%= image_tag("facebook.png", :class => "social-logo") %>
+        <%= image_tag("instagram.png", :class => "social-logo") %>
+        <%= image_tag("twitter.png", :class => "social-logo") %>
+        <%= image_tag("youtube.png", :class => "social-logo") %>
+      </div>
+      <h2>CONTACT US</h2>
+      <div class="footer-contact">
+        <div class="footer-contact-detail">
+          <%= image_tag("telephone.png", :class => "contact-logo") %>
+          <p>+639123442069</p>
+        </div>
+        <div class="footer-contact-detail">
+          <%= image_tag("email.png", :class => "contact-logo") %>
+          <p>support@atlasindex.com</p> 
+        </div>
       </div>
     </div>
   </footer>
