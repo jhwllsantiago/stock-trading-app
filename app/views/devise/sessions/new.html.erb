@@ -25,6 +25,8 @@
   <main class="container-fluid main-container">
     <%= video_tag("analysis.mp4", :class => "bg-video", :autoplay => true, :loop => true, :muted => 'muted') %>
     <div class="container-fluid stock-container">
+    <div class='stock-name-container'>
+      <h1>NAME</h1>
       <div class="stock-name">
         <%= image_tag("apple.png", :class => "stock-logo") %>
         <div>
@@ -61,6 +63,23 @@
         </div>
       </div>
     </div>
+    <div class="stock-price-container">
+      <h1>PRICE</h1>
+      <h2>$126.36</h2>
+      <h2>$229.10</h2>
+      <h2>$88.71</h2>
+      <h2>$85.41</h2>
+      <h2>$212.61</h2>
+    </div>
+    <div class="stock-cap-container">
+      <h1>MARKET CAP</h1>
+      <h2>$2.088T</h2>
+      <h2>$1.709T</h2>
+      <h2>$1.132T</h2>
+      <h2>$868.57B</h2>
+      <h2>$450.22B</h2>
+    </div>
+    <div>
   </main>
   <footer class="container-fluid footer-container">
     <div class="footer-item">
