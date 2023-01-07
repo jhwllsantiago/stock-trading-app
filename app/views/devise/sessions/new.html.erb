@@ -13,14 +13,26 @@
         <p class="index"><strong>INDEX</strong></p>
       </div>
       <div class="nav-items-right">
-        <p>LOG IN</p>
-        <button>
-          <p>REGISTER</p>
-        </button>
-        <button></button>
-        <img/>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="nav-login">
+          <div class="nav-login-input">
+            <div class="field">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </div>
+            <div class="field">
+              <%= f.label :password %><br />
+              <%= f.password_field :password, autocomplete: "current-password" %>
+            </div>
+            <div class="actions">
+              <%= f.submit "Log in" %>
+            </div>
+          </div>
+          <div class="nav-login-actions"
+            <% end %>
+          </div>
+          </div>
       </div>
-    </div>
   </nav>
   <main class="container-fluid main-container">
     <%= video_tag("analysis.mp4", :class => "bg-video", :autoplay => true, :loop => true, :muted => 'muted') %>
@@ -115,33 +127,40 @@
         <p>Press</p>
       </div>
     </div>
+
     <div class="footer-media">
-      <h2>STAY CONNECTED</h2>
-      <p>SIGN UP FOR THE LATEST NEWS AND UPDATES</p>
-      <div class="footer-email">
-        <input type="email" placeholder="Email"/>
-        <button>
-          <%= image_tag("send.png", :class => "send-logo") %>
-        </button>
-      </div>
-      <h2>FOLLOW US</h2>
-      <div class="footer-socials">
-        <%= image_tag("facebook.png", :class => "social-logo") %>
-        <%= image_tag("instagram.png", :class => "social-logo") %>
-        <%= image_tag("twitter.png", :class => "social-logo") %>
-        <%= image_tag("youtube.png", :class => "social-logo") %>
-      </div>
-      <h2>CONTACT US</h2>
-      <div class="footer-contact">
-        <div class="footer-contact-detail">
-          <%= image_tag("telephone.png", :class => "contact-logo") %>
-          <p>+639123442069</p>
-        </div>
-        <div class="footer-contact-detail">
-          <%= image_tag("email.png", :class => "contact-logo") %>
-          <p>support@atlasindex.com</p> 
+      <div class="footer-separator">
+        <h2>STAY CONNECTED</h2>
+        <p>SIGN UP FOR THE LATEST NEWS AND UPDATES</p>
+        <div class="footer-email">
+          <input type="email" placeholder="Email"/>
+          <button>
+            <%= image_tag("send.png", :class => "send-logo") %>
+          </button>
         </div>
       </div>
+
+      <div class="footer-separator">
+        <h2>FOLLOW US</h2>
+        <div class="footer-socials">
+          <%= image_tag("facebook.png", :class => "social-logo") %>
+          <%= image_tag("instagram.png", :class => "social-logo") %>
+          <%= image_tag("twitter.png", :class => "social-logo") %>
+          <%= image_tag("youtube.png", :class => "social-logo") %>
+        </div>
+        <h2>CONTACT US</h2>
+        <div class="footer-contact">
+          <div class="footer-contact-detail">
+            <%= image_tag("telephone.png", :class => "contact-logo") %>
+            <p>+639123442069</p>
+          </div>
+          <div class="footer-contact-detail">
+            <%= image_tag("email.png", :class => "contact-logo") %>
+            <p>support@atlasindex.com</p> 
+          </div>
+        </div>
+      </div>
+
     </div>
   </footer>
 </div>
