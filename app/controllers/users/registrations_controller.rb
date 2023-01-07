@@ -28,6 +28,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         notice = current_user && current_user.admin? ? :signed_up_through_admin : :signed_up
         set_flash_message! :notice, notice
         sign_up(resource_name, resource)
+        UserMailer.with(user: resource).welcome.deliver_later
         respond_with resource, location: after_sign_up_path_for(resource)
       else
         set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
