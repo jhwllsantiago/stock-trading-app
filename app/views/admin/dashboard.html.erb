@@ -1,9 +1,26 @@
-<% @users.each do |user| %>
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Lame</th>
+    <th>Email</th>
+    <th>Status</th>
+    <th>Manage</th>
+  </tr>
+  <% @users.each do |user| %>
     <tr>
-        <td><%= user.email %> </td>
-        <td><%= user.first_name %> </td>
-        <td><%= user.last_name %> </td>
+      <td><%= user.first_name %></td>
+      <td><%= user.last_name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.approved ? "Approved" : "Pending" %></td>
+      <td>
+        <div>
+          <% if user[:approved] %>
+            <%= link_to "Edit", edit_user_path(user) %>
+          <% else %>
+            <%= button_to "Approve", approve_user_path(user), method: :patch %>
+          <% end %>
+        </div>
+      </td>
     </tr>
-    <br />
-<% end %>
-
+  <% end %>
+</table>

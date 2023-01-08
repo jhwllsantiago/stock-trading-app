@@ -33,6 +33,12 @@ class AdminController < ApplicationController
         end
     end
 
+    def approve
+        user = User.find(params[:id])
+        UserMailer.with(user: user).approved.deliver_later
+        user.update(approved: true)
+    end
+
     private 
     
     def set_user
