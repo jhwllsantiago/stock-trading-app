@@ -1,0 +1,15 @@
+<%= turbo_frame_tag dom_id(user) do %>
+  <tr>
+    <td><%= user.first_name %></td>
+    <td><%= user.last_name %></td>
+    <td><%= user.email %></td>
+    <td><%= user.approved ? "Approved" : "Pending" %></td>
+    <td>
+    <% if user.approved %>
+        <%= link_to "Edit", edit_user_path(user) %>
+    <% else %>
+        <%= link_to "Approve", approve_user_path(user), data: {"turbo-method": :patch, turbo_frame: dom_id(user)} %>
+    <% end %>    
+    </td>
+  </tr>
+<% end %>

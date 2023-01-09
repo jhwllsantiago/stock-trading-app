@@ -6,4 +6,15 @@ class User < ApplicationRecord
   validates :first_name, :last_name, presence: true
   enum role: [:trader, :admin]
   has_many :orders
+<<<<<<< HEAD
+=======
+
+  def active_for_authentication? 
+    super && approved?
+  end 
+    
+  def inactive_message 
+    approved? ? super : :not_approved
+  end
+>>>>>>> development
 end
