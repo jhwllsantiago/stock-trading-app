@@ -8,7 +8,8 @@
 
 users = User.create([
   {email: "admin@atlas.com", password: "password", password_confirmation: "password", first_name: "Atlas", last_name: "Admin", balance: 0.0, role: 1, approved: true},
-  {email: "user@atlas.com", password: "password", password_confirmation: "password", first_name: "John", last_name: "Doe", balance: 150.00, role: 0, approved: false}
+  {email: "user@atlas.com", password: "password", password_confirmation: "password", first_name: "John", last_name: "Doe", balance: 150.00, role: 0, approved: false},
+  {email: "user2@atlas.com", password: "password", password_confirmation: "password", first_name: "Jane", last_name: "Doe", balance: 123.00, role: 0, approved: false}
   ])
 stocks = Stock.create([{ price: 15.12, company: "ABC Company" }, { price: 10.11, company: "DEF Company" }, { price: 1.01, company: "GHI Company" }])
 Order.create([

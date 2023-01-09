@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   patch "admin/manage/:id", to: "admin#update", as: "update_user"
   delete "admin/manage/:id", to: "admin#destroy", as: "destroy_user"
   patch "admin/manage/:id/approve", to: "admin#approve", as: "approve_user"
+  get "admin/users/:id", to: "admin#user_row", as: "user_row"
 end
