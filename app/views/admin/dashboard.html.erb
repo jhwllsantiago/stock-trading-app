@@ -1,9 +1,12 @@
-<% @users.each do |user| %>
-    <tr>
-        <td><%= user.email %> </td>
-        <td><%= user.first_name %> </td>
-        <td><%= user.last_name %> </td>
-    </tr>
-    <br />
-<% end %>
-
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Lame</th>
+    <th>Email</th>
+    <th>Status</th>
+    <th>Actions</th>
+  </tr>
+  <% @users.each do |user| %>
+    <%= render "user_row", user: user %>
+  <% end %>
+</table>
