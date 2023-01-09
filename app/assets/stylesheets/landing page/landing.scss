@@ -248,10 +248,15 @@
         line-height: 1.5;
       }
 
-      & button {
-        background-color: #1ED1A8;
+      & button a {
+        text-decoration: none;
         color: white;
         text-transform: uppercase;
+      }
+
+      & button {
+
+        background-color: #1ED1A8;
         padding: 1.2rem;
         border-radius: .5rem;
         border: none;
