@@ -392,18 +392,20 @@
 }
 
 #new_user {
-  // height: 40rem;
-  // width: 20rem;
   position: fixed;
   top: 0;
 }
 
+#new_user[target=login] {
+  position: relative;
+}
+
 .sign-up-heading {
-  position: fixed;
+  position: absolute;
   top: 0;
 }
 
 .sign-up-links {
-  position: fixed;
+  position: absolute;
   top: 0;
 }

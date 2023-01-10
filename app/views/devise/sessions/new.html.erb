@@ -13,7 +13,7 @@
         <p class="index"><strong>INDEX</strong></p>
       </div>
       <div class="nav-items-right">
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => 'login-form', 'target' => 'login'}) do |f| %>
         <div class="nav-login">
           <div class="nav-login-input">
             <div class="field">
@@ -28,11 +28,11 @@
               <%= f.submit "Log in" %>
             </div>
           </div>
-          <div class="nav-login-actions"
+          <div class="nav-login-actions">
             <% end %>
           </div>
-          </div>
       </div>
+    </div>
   </nav>
   <main class="container-fluid main-container">
     <%= video_tag("analysis.mp4", :class => "bg-video", :autoplay => true, :loop => true, :muted => 'muted') %>
@@ -43,35 +43,35 @@
         <%= image_tag("apple.png", :class => "stock-logo") %>
         <div>
           <h2>Apple</h2>
-          <p>AAPL<p>
+          <p>AAPL</p>
         </div>
       </div>
       <div class="stock-name">
         <%= image_tag("msft.png", :class => "stock-logo") %>
         <div>
           <h2>Microsoft</h2>
-          <p>MSFT<p>
+          <p>MSFT</p>
         </div>
       </div>
       <div class="stock-name">
         <%= image_tag("google.png", :class => "stock-logo") %>
         <div>
           <h2>Google</h2>
-          <p>GOOG<p>
+          <p>GOOG</p>
         </div>
       </div>
       <div class="stock-name">
         <%= image_tag("amazon.png", :class => "stock-logo") %>
         <div>
           <h2>Amazon</h2>
-          <p>AMZN<p>
+          <p>AMZN</p>
         </div>
       </div>
       <div class="stock-name">
         <%= image_tag("visa3.png", :class => "stock-logo visa") %>
         <div>
           <h2>Visa</h2>
-          <p>V<p>
+          <p>V</p>
         </div>
       </div>
     </div>
@@ -107,10 +107,11 @@
               <p>*Welcome bonus only applicable to new users</p>
             </div>
             <button>
-              <%= link_to "Sign Up", new_user_registration_path, "data-controller": "turbo" %>
+              <%= link_to "Sign Up", new_user_registration_path, "data-controller": "turbo"%>
             </button>
       </div>
     </div>
+  </div>
   </main>
   <footer class="container-fluid footer-container">
     <div class="footer-item">
