@@ -1,5 +1,5 @@
-<div class="overlay">
-</div>
+<div class="overlay" onclick="this.style.display='none'">
+
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:class => 'sign-up-form', 'target' => 'signup'}) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -39,3 +39,4 @@
 <% end %>
 
 <%#= render "devise/shared/links", locals: { myclass: 'sign-up-links' } %>
+</div>
