@@ -391,26 +391,26 @@
   }
 }
 
-.sign-up-form[target=signup] {
-  border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 40rem;
-  width: 40rem;
-  color: white;
-  background-color: #b0b0b0;
-  position: absolute;
-  top: 10rem;
-  left: 60rem;
-  transform: translate(50%, 50%);
-  z-index: 20;
-}
+// .sign-up-form[target=signup] {
+//   border-radius: 1rem;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   height: 40rem;
+//   width: 40rem;
+//   color: white;
+//   background-color: #b0b0b0;
+//   position: absolute;
+//   top: 10rem;
+//   left: 60rem;
+//   transform: translate(50%, 50%);
+//   z-index: 20;
+// }
 
-#new_user[target=login] {
-  position: relative;
-}
+// #new_user[target=login] {
+//   position: relative;
+// }
 
 .overlay {
   backdrop-filter: blur(6px);
