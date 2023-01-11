@@ -49,6 +49,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
   def edit
+    if current_user && current_user.admin?
+      @user = User.find(params[:id])
+    end
     super
   end
 
