@@ -49,6 +49,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
   def edit
+    if current_user && current_user.admin?
+      @user = User.find(params[:id])
+    end
     super
   end
 
@@ -89,11 +92,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
-  #   super(resource)
+  #   if current_user.admin?
+  #     admin_path
+  #   else
+  #     root_path
+  #   end
   # end
 
-  # The path used after sign up for inactive accounts.
+  # # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
 end
+

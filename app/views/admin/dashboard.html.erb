@@ -1,12 +1,16 @@
-<table>
-  <tr>
-    <th>First Name</th>
-    <th>Last Lame</th>
-    <th>Email</th>
-    <th>Status</th>
-    <th>Actions</th>
-  </tr>
+<div style="display: flex; flex-direction: column;">
+  <div style="display: flex">
+    <p style="width: 150px">First Name</p>
+    <p style="width: 150px">Last Lame</p>
+    <p style="width: 150px">Email</p>
+    <p style="width: 150px">Status</p>
+    <p style="width: 150px">Actions</p>
+  </div>
   <% @users.each do |user| %>
     <%= render "user_row", user: user %>
   <% end %>
-</table>
+</div>
+
+<div>
+  <%= link_to "Create new user", new_user_registration_path %>
+</div>
