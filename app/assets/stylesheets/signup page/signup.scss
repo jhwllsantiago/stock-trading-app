@@ -112,3 +112,21 @@
     display: block;
     margin-bottom: 0em;
 }
+
+.actions {
+
+  p {
+    margin-top: 1rem;
+  }
+
+  a {
+
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #1ED1A8;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
