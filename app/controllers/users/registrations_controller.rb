@@ -20,6 +20,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     if !current_user || current_user.admin?
       build_resource(sign_up_params)
+      
+      if current_user.admin?
+        resource.approved = true
+      end
 
     resource.save
     yield resource if block_given?
