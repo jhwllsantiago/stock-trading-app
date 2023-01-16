@@ -3,7 +3,11 @@ class StocksController < ApplicationController
 
   # GET /stocks or /stocks.json
   def index
-    @stocks = Stock.all
+    client = IEX::Api::Client.new(publishable_token: 'pk_79541eba9c3b47a89aad63f6efc2b5ab', endpoint: 'https://cloud.iexapis.com/v1')
+    @stocks = Stock.all.each do |stock|
+      quote = client.quote(stock.ticker)
+      stock.update(price: quote.latest_price)
+    end
   end
 
   # GET /stocks/1 or /stocks/1.json
