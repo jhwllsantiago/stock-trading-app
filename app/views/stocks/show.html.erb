@@ -1,14 +1,20 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @stock %>
-<p>There are <span><%= @stock_buy.count %></span> Buy orders for this stock</p>
-<% @stock_buy.each do |order| %>
-  <span><%= order.quantity %></span>
+<h1><%= @stock.ticker %></h1>
+<h2><%= @stock.company %></h2>
+<h3>USD <%= @stock.price %></h3>
+<p>There are <span><%= @stock.orders.buy.count %></span> Buy orders for this stock</p>
+<% @stock.orders.buy.each do |order| %>
+  <span>Order No.: <%= order.id %></span>
+  <span>Offer: USD <%= order.price %></span>
+  <span>Qt: <%= order.quantity %></span>
 <% end %>
 
-<p>There are <span><%= @stock_sell.count %></span> Sell orders for this stock</p>
-<% @stock_sell.each do |order| %>
-  <span><%= order.quantity %></span>
+<p>There are <span><%= @stock.orders.sell.count %></span> Sell orders for this stock</p>
+<% @stock.orders.sell.each do |order| %>
+  <span>Order No.: <%= order.id %></span>
+  <span>Asking: USD <%= order.price %></span>
+  <span>Qt: <%= order.quantity %></span>
 <% end %>
 
 <div>
