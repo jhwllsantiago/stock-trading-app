@@ -99,15 +99,46 @@
 
 .sign-up-errors {
   position: absolute;
-  top: 15rem;
+  bottom: 25rem;
+  left: 2.5rem;
+  
+
+  & h2 {
+    display: none;
+  }
 
   & li {
-    font-size: 1.3rem;
+    position: absolute;
+    left: 10rem;
+    width: 13rem;
+    font-size: 1rem;
     list-style: none;
     text-align: center;
   }
-}
 
+  & li:nth-child(1) {
+    color: red;
+    left: 9rem;
+    top: -5.5rem;
+  }
+
+  & li:nth-child(2) {
+    color: red;
+    left: 22rem;
+    top: 1.5rem;
+  }
+
+  & li:nth-child(3) {
+    color: red;
+    top: -19.5rem;
+  }
+
+  & li:nth-child(4) {
+    color: red;
+    top: -12.5rem;
+  }
+  
+ }
 .field .field_with_errors br {
     display: block;
     margin-bottom: 0em;
@@ -130,3 +161,4 @@
     }
   }
 }
+
