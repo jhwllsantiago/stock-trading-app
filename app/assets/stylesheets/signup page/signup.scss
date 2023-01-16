@@ -1,0 +1,164 @@
+.sign-up-container {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("signup.jpg");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-up-form {
+  height: 75rem;
+  width: 60rem;
+  border-radius: 2rem;
+  background-color: #3D3A4B;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  border: 2px solid #1ED1A8;
+
+
+  & input {
+    height: 3rem;
+    width: 35rem;
+    border-radius: .5rem;
+    border: none;
+  }
+
+  & label {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+}
+
+.sign-up-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10rem;
+}
+
+.sign-up-header {
+  width: 60rem;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  color: #1ED1A8;
+  border: 2px solid #1ED1A8;
+  border-top: none;
+  border-radius: 1.8rem 1.8rem 0 0;
+
+
+  & .sign-up-logo {
+    height: 10rem;
+  }
+
+  & p {
+    font-size: 3rem;
+    font-weight: 700;
+  }
+}
+
+.sign-up-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: white;
+  position: relative;
+
+  & .sign-up-title {
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+
+  & input[type=submit] {
+    // margin-top: 2rem;
+    width: 15rem;
+    height: 6rem;
+    color: white;
+    background-color: #1ED1A8;
+    font-size: 2rem;
+    text-transform: uppercase;
+    transition: all .5s;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
+
+.sign-up-errors {
+  position: absolute;
+  bottom: 25rem;
+  left: 2.5rem;
+  
+
+  & h2 {
+    display: none;
+  }
+
+  & li {
+    position: absolute;
+    left: 10rem;
+    width: 13rem;
+    font-size: 1rem;
+    list-style: none;
+    text-align: center;
+  }
+
+  & li:nth-child(1) {
+    color: red;
+    left: 9rem;
+    top: -5.5rem;
+  }
+
+  & li:nth-child(2) {
+    color: red;
+    left: 22rem;
+    top: 1.5rem;
+  }
+
+  & li:nth-child(3) {
+    color: red;
+    top: -19.5rem;
+  }
+
+  & li:nth-child(4) {
+    color: red;
+    top: -12.5rem;
+  }
+  
+ }
+.field .field_with_errors br {
+    display: block;
+    margin-bottom: 0em;
+}
+
+.actions {
+
+  p {
+    margin-top: 1rem;
+  }
+
+  a {
+
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #1ED1A8;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
