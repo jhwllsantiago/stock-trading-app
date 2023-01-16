@@ -1,13 +1,13 @@
 <div style="display: flex; flex-direction: column;">
   <div style="display: flex">
     <p style="width: 150px">First Name</p>
-    <p style="width: 150px">Last Lame</p>
+    <p style="width: 150px">Last Name</p>
     <p style="width: 150px">Email</p>
     <p style="width: 150px">Status</p>
     <p style="width: 150px">Actions</p>
   </div>
   <% @users.each do |user| %>
-    <%= render "user_row", user: user %>
+    <%= link_to render("user_row", user: user), show_user_path(user.id) %>
   <% end %>
 </div>
 
