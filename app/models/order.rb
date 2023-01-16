@@ -1,4 +1,6 @@
 class Order < ApplicationRecord
+  scope :buy, -> { where("action == 0") }
+  scope :sell, -> { where("action == 1") }
   enum action: [:buy, :sell]
   enum status: [:pending, :success, :expired]
   belongs_to :user
