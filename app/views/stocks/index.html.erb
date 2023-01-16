@@ -6,9 +6,10 @@
   <% @stocks.each do |stock| %>
     <%= render stock %>
     <p>
-      <%= link_to "Show this stock", stock %>
+      <%= link_to "Show this stock", stock_details_path(stock) %>
     </p>
   <% end %>
 </div>
 
 <%= link_to "New stock", new_stock_path %>
+<%= button_to "Sign out", destroy_user_session_path, :method => :delete %>

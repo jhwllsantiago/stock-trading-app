@@ -1,12 +1,5 @@
 <div id="<%= dom_id stock %>">
-  <p>
-    <strong>Price:</strong>
-    <%= stock.price %>
-  </p>
-
-  <p>
-    <strong>Company:</strong>
-    <%= stock.company %>
-  </p>
-
+  <h1><%= stock.ticker %></h1>
+  <h2><%= stock.company %></h2>
+  <h3>USD <%= stock.price %></h3>
 </div>
