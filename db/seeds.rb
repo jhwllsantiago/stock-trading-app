@@ -8,7 +8,7 @@ User.create([
 
 # create stocks using iex api
 tickers = %w(AAPL MSFT AMZN TSLA GOOGL GOOG BRK.B UNH JNJ XOM JPM META V PG NVDA HD CVX LLY MA ABBV PFE MRK PEP BAC KO)
-client = IEX::Api::Client.new(publishable_token: 'pk_79541eba9c3b47a89aad63f6efc2b5ab', endpoint: 'https://cloud.iexapis.com/v1')
+client = IEX::Api::Client.new
 tickers.each do |ticker|
   quote = client.quote(ticker)
   company = client.company(ticker)
