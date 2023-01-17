@@ -1,11 +1,25 @@
-<p>
-    <%= @user.first_name %>
-    <%= @user.last_name %>
-</p>
 
-</p>
-<p>
-    <%= @user.email %>
-</p>
+<%= image_tag("dp.png", :class => "user-dp") %>
+    
+<div class='user-profile'>
+    <div class='user-profile-details'>
+        <strong><p>
+            <%= @user.first_name %>
+            <%= @user.last_name %>
+        </p></strong>
+        <p>
+            Email: <%= @user.email %>
+        </p>
+        <p>
+            Balance: <%= @user.balance %> 
+        </p>
+    </div>
+    <div class='show-user-actions'>
+        <%= link_to "Edit Profile", edit_user_path(@user) %>
+        <%= button_to "Delete Profile", destroy_user_path, method: :delete %>
+    </div>
+</div>
+
+
 
 

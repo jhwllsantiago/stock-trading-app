@@ -1,0 +1,27 @@
+.user-dp {
+    height: 18rem;
+}
+
+.user-profile-container {
+    margin-left: 3rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    width: 40%;
+    justify-content: space-around;
+    border: 2px solid #1ED1A8;
+    border-radius: 2rem;
+}
+
+.user-profile {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 20vh;
+    justify-content: space-evenly;
+}
+
+.show-user-actions {
+    display: flex;
+    align-items: flex-end;
+}

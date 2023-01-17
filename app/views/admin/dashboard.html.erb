@@ -1,17 +1,49 @@
-<div style="display: flex; flex-direction: column;">
-  <div style="display: flex">
-    <p style="width: 150px">First Name</p>
-    <p style="width: 150px">Last Name</p>
-    <p style="width: 150px">Email</p>
-    <p style="width: 150px">Status</p>
-    <p style="width: 150px">Actions</p>
+<%= render "admin_nav" %>
+
+<div class='admin-container'>
+
+<div class='admin-features'>
+  
+  <div class='admin-feature add-user-btn'>
+    <%= link_to image_tag("add-user.png", :class => "feature-icon"), new_user_registration_path %>
+    <strong><%= link_to "Add User", new_user_registration_path, class: 'admin-feature-link' %></strong>
   </div>
-  <% @users.each do |user| %>
-    <%= link_to render("user_row", user: user), show_user_path(user.id) %>
-  <% end %>
+
+  <div class='admin-feature'>
+    <%= image_tag("logs.png", :class => "feature-icon") %>
+    <strong><span>Logs</span></strong>
+  </div>
+
+  <div class='admin-feature'>
+    <%= image_tag("report.png", :class => "feature-icon") %>
+    <strong><span>Reports</span></strong>
+  </div>
+
+  <div class='admin-feature'>
+    <%= image_tag("tool.png", :class => "feature-icon") %>
+    <strong><span>Tools</span></strong>
+  </div>
+
+  <div class='admin-feature'>
+    <%= image_tag("setting.png", :class => "feature-icon") %>
+    <strong><span>Settings</span></strong>
+  </div>
+
 </div>
 
-<div>
-  <%= link_to "Create new user", new_user_registration_path %>
+<div class='users-container'>
+  <div class='users-headers'>
+    <h2>First Name</h2>
+    <h2>Last Name</h2>
+    <h2>Email</h2>
+    <h2 class='users-headers-status'>Status</h2>
+    <h2 class='users-headers-actions'>Actions</h2>
+  </div>
+  <div class='user-container'>
+  <% @users.each do |user| %>
+    <%= render "user_row", user: user %>
+  <% end %>
+  </div>
 </div>
-<%= button_to "Sign out", destroy_user_session_path, :method => :delete %>
+
+</div>

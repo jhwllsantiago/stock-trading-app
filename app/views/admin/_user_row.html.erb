@@ -1,15 +1,16 @@
 <%= turbo_frame_tag dom_id(user) do %>
-  <div style="display: flex">
-    <p style="width: 150px"><%= user.first_name %></p>
-    <p style="width: 150px"><%= user.last_name %></p>
-    <p style="width: 150px"><%= user.email %></p>
-    <p style="width: 150px"><%= user.approved ? "Approved" : "Pending" %></p>
-    <p style="width: 150px">
-    <% if user.approved %>
-        <%= link_to "Edit", edit_user_path(user), html: { style: "width: 150px" } %>
-    <% else %>
-        <%= link_to "Approve", approve_user_path(user), data: {"turbo-method": :patch, turbo_frame: dom_id(user)}, html: { style: "width: 150px" } %>
+<div class='user-row-container'>
+  <div class='user-row'>
+    <p class='user-row-name'><%= link_to user.first_name, show_user_path(user.id), class: 'user-link'%></p>
+    <p class='user-row-name'><%= link_to user.last_name, show_user_path(user.id), class: 'user-link'%></p>
+    <p class='user-row-email'><%= link_to user.email, show_user_path(user.id), class: 'user-link'%></p>
+    <p class='user-row-status'><%= user.approved ? "Approved" : "Pending" %></p>
+    <p class='user-row-actions'><% if user.approved %>
+        <%= link_to "Edit Profile", edit_user_path(user), class: 'users-action-btns' %>
+      <% else %>
+        <%= link_to "Approve", approve_user_path(user), data: {"turbo-method": :patch, turbo_frame: dom_id(user)}, class: 'users-action-btns' %>
     <% end %>    
     </p>
   </div>
+</div>  
 <% end %>
