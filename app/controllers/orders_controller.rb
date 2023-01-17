@@ -23,17 +23,27 @@ class OrdersController < ApplicationController
 
   # POST /orders or /orders.json
   def create
+    action = params[:order_action].to_i
+    asset = current_user.assets.find_by(stock_id: @stock.id)
     @order = Order.new(order_params)
+    @order.action = action
+    @order.status = 0
     @order.user = current_user
     @order.stock = @stock
-
+    
     respond_to do |format|
-      if @order.save
-        format.html { redirect_to order_url(@order), notice: "Order was successfully created." }
-        format.json { render :show, status: :created, location: @order }
+      if  action == 0 and @order.price * @order.quantity > current_user.balance
+        format.html { redirect_to stock_details_url(@stock), notice: "Insufficient balance." }
+      elsif action == 1 and !asset
+        format.html { redirect_to stock_details_url(@stock), notice: "You have no #{@stock.ticker} assets." }
+      elsif action == 1 and @order.quantity > asset&.quantity
+        format.html { redirect_to stock_details_url(@stock), notice: "Insufficient #{@stock.ticker} assets." }
+      elsif @order.save
+        format.html { redirect_to stock_details_url(@stock), notice: "Order was successfully created." }
+        current_user.balance -= @order.price * @order.quantity
+        current_user.save
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+        format.html { render :create, notice: "Error while creating order.", status: :unprocessable_entity }
       end
     end
   end
@@ -73,6 +83,6 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:action, :status, :user_id, :stock_id, :quantity)
+      params.require(:order).permit(:quantity, :price)
     end
 end

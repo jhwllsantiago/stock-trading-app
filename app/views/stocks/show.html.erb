@@ -17,6 +17,40 @@
   <span>Qt: <%= order.quantity %></span>
 <% end %>
 
+<div style="display: flex;">
+  <%= form_with model: @order, url: create_order_path(0, @stock.id), method: :post do |form| %>
+    <div>
+      <%= form.label :price, style: "display: block" %>
+      <%= form.number_field :price %>
+    </div>
+
+    <div>
+      <%= form.label :quantity, style: "display: block" %>
+      <%= form.number_field :quantity %>
+    </div>
+
+    <div>
+      <%= form.submit "Buy #{@stock.ticker}" %>
+    </div>
+  <% end %>
+
+  <%= form_with model: @order, url: create_order_path(1, @stock.id), method: :post do |form| %>
+    <div>
+      <%= form.label :price, style: "display: block" %>
+      <%= form.number_field :price %>
+    </div>
+
+    <div>
+      <%= form.label :quantity, style: "display: block" %>
+      <%= form.number_field :quantity %>
+    </div>
+
+    <div>
+      <%= form.submit "Sell #{@stock.ticker}" %>
+    </div>
+  <% end %>
+</div>
+
 <div>
   <%= link_to "Back to stocks", stocks_path %>
 </div>

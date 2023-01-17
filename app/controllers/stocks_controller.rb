@@ -8,6 +8,7 @@ class StocksController < ApplicationController
 
   # GET /stocks/1 or /stocks/1.json
   def show
+    @order = Order.new
   end
 
   private
