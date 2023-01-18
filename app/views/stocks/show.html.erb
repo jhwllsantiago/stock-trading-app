@@ -17,8 +17,10 @@
   <span>Qt: <%= order.quantity %></span>
 <% end %>
 
-<div style="display: flex;">
+<div style="display: flex; padding: 20px;">
   <%= form_with model: @order, url: create_order_path(0, @stock.id), method: :post do |form| %>
+    <h3>Your Balance: <%= current_user.balance %></h3>
+
     <div>
       <%= form.label :price, style: "display: block" %>
       <%= form.number_field :price %>
@@ -34,21 +36,26 @@
     </div>
   <% end %>
 
-  <%= form_with model: @order, url: create_order_path(1, @stock.id), method: :post do |form| %>
-    <div>
-      <%= form.label :price, style: "display: block" %>
-      <%= form.number_field :price %>
-    </div>
+  <% if @asset %>
+    <%= form_with model: @order, url: create_order_path(1, @stock.id), method: :post do |form| %>
+      <h3>Avaiable <%= @stock.ticker %> assets: <%= @asset.quantity %></h3>
 
-    <div>
-      <%= form.label :quantity, style: "display: block" %>
-      <%= form.number_field :quantity %>
-    </div>
+      <div>
+        <%= form.label :price, style: "display: block" %>
+        <%= form.number_field :price %>
+      </div>
 
-    <div>
-      <%= form.submit "Sell #{@stock.ticker}" %>
-    </div>
+      <div>
+        <%= form.label :quantity, style: "display: block" %>
+        <%= form.number_field :quantity %>
+      </div>
+
+      <div>
+        <%= form.submit "Sell #{@stock.ticker}" %>
+      </div>
+    <% end %> 
   <% end %>
+  
 </div>
 
 <div>

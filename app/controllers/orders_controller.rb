@@ -34,14 +34,17 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if  action == 0 and @order.price * @order.quantity > current_user.balance
         format.html { redirect_to stock_details_url(@stock), notice: "Insufficient balance." }
-      elsif action == 1 and !asset
-        format.html { redirect_to stock_details_url(@stock), notice: "You have no #{@stock.ticker} assets." }
       elsif action == 1 and @order.quantity > asset&.quantity
         format.html { redirect_to stock_details_url(@stock), notice: "Insufficient #{@stock.ticker} assets." }
       elsif @order.save
-        format.html { redirect_to stock_details_url(@stock), notice: "Order was successfully created." }
-        current_user.balance -= @order.price * @order.quantity
-        current_user.save
+        if action == 0
+          current_user.balance -= @order.price * @order.quantity
+          current_user.save
+        else
+          asset.quantity -= @order.quantity
+          asset.save
+        end
+        format.html { redirect_to stock_details_url(@stock), notice: "Order was successfully created." } 
       else
         format.html { render :create, notice: "Error while creating order.", status: :unprocessable_entity }
       end
