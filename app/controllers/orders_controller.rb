@@ -166,6 +166,6 @@ class OrdersController < ApplicationController
     end
     
     def active_orders_for order
-      orders = @stock.orders.where.not(user: current_user).where(price: order.price).pending
+      orders = @stock.orders.where.not(user: current_user).where(price: order.price).pending.includes(:user).order("users.role")
     end
 end
