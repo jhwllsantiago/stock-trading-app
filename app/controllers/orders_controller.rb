@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show edit update destroy ]
   before_action :set_stock
-  before_action :authenticate_user!, only: %i[ new create edit update destroy ]
+  before_action :authenticate_user!
+  before_action :set_order_details, only: %i[ buy sell ]
 
   # GET /orders or /orders.json
   def index
@@ -23,20 +24,101 @@ class OrdersController < ApplicationController
 
   # POST /orders or /orders.json
   def create
-    @order = Order.new(order_params)
-    @order.user = current_user
-    @order.stock = @stock
+  end
+
+  # POST /orders/buy/:stock_id
+  def buy
+    @order.action = 0
+    orders = active_orders_for(@order).sell
 
     respond_to do |format|
-      if @order.save
-        format.html { redirect_to order_url(@order), notice: "Order was successfully created." }
-        format.json { render :show, status: :created, location: @order }
+      if @order.price * @order.quantity > current_user.balance
+        format.html { redirect_to stock_details_url(@stock), notice: "Insufficient balance." }
+      elsif @order.save
+        current_user.balance -= @order.price * @order.quantity
+        current_user.save
+        if !orders.empty?
+          required_quantity = @order.quantity
+          accumulated_quantity = 0.0
+          orders.each do |order|
+            if accumulated_quantity >= @order.quantity
+              break
+            elsif order.quantity >= required_quantity
+              order.user.update(balance: order.user.balance + required_quantity * order.price)
+              order.quantity -= required_quantity
+              order.status = 1 if order.quantity == 0.0
+              order.save
+              accumulated_quantity += required_quantity
+              required_quantity = 0.0
+            elsif order.quantity < required_quantity
+              required_quantity -= order.quantity
+              accumulated_quantity += order.quantity
+              order.user.update(balance: order.user.balance + order.quantity * order.price)
+              order.update(quantity: 0.0, status: 1)
+            end
+          end
+          @order.status = 1 if accumulated_quantity >= @order.quantity
+          @order.quantity -= accumulated_quantity
+          @asset.quantity += accumulated_quantity
+          @order.save
+          @asset.save
+          format.html { redirect_to stock_details_url(@stock), notice: "Order has been #{"partially" if required_quantity > 0.0} fulfilled." }
+        else
+          format.html { redirect_to stock_details_url(@stock), notice: "Order has been posted." } 
+        end
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+        format.html { render :create, notice: "Cannot process order.", status: :unprocessable_entity }
       end
     end
   end
+
+  # POST /orders/sell/:stock_id
+  def sell
+    @order.action = 1
+    orders = active_orders_for(@order).buy
+
+    respond_to do |format|
+      if @order.quantity > @asset.quantity
+        format.html { redirect_to stock_details_url(@stock), notice: "Insufficient assets." }
+      elsif @order.save
+        @asset.quantity -= @order.quantity
+        @asset.save
+        if !orders.empty?
+          required_quantity = @order.quantity
+          accumulated_quantity = 0.0
+          orders.each do |order|
+            asset = order.user.assets.find_by(stock_id: @stock.id)
+            if accumulated_quantity >= @order.quantity
+              break
+            elsif order.quantity >= required_quantity
+              asset.update(quantity: asset.quantity + required_quantity)
+              order.quantity -= required_quantity
+              order.status = 1 if order.quantity == 0.0
+              order.save
+              accumulated_quantity += required_quantity
+              required_quantity = 0.0
+            elsif order.quantity < required_quantity
+              required_quantity -= order.quantity
+              accumulated_quantity += order.quantity
+              asset.update(quantity: asset.quantity + order.quantity)
+              order.update(quantity: 0.0, status: 1)
+            end
+          end
+          @order.status = 1 if accumulated_quantity >= @order.quantity
+          @order.quantity -= accumulated_quantity
+          current_user.balance += @order.price * accumulated_quantity
+          @order.save
+          current_user.save
+          format.html { redirect_to stock_details_url(@stock), notice: "Order has been #{"partially" if required_quantity > 0.0} fulfilled." }
+        else
+          format.html { redirect_to stock_details_url(@stock), notice: "Order has been posted." } 
+        end
+      else
+        format.html { render :create, notice: "Cannot process order.", status: :unprocessable_entity }
+      end
+    end
+  end
+  
 
   # PATCH/PUT /orders/1 or /orders/1.json
   def update
@@ -62,7 +144,6 @@ class OrdersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])
     end
@@ -71,8 +152,20 @@ class OrdersController < ApplicationController
       @stock = Stock.find(params[:stock_id])
     end
 
-    # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:action, :status, :user_id, :stock_id, :quantity)
+      params.require(:order).permit(:quantity, :price)
+    end
+
+    def set_order_details
+      @asset = current_user.assets.find_by(stock_id: @stock.id)
+      @asset = Asset.create(user: current_user, stock: @stock, quantity: 0.0) if !@asset
+      @price = order_params[:price]
+      @quantity = order_params[:quantity]
+      @order = Order.new(status: 0, user: current_user, stock: @stock, price: @stock.price)
+      @order.quantity = @quantity ? @quantity.to_f : @price.to_f/@stock.price.to_f
+    end
+    
+    def active_orders_for order
+      orders = @stock.orders.where.not(user: current_user).where(price: order.price).pending.includes(:user).order("users.role")
     end
 end

@@ -9,6 +9,9 @@ class PriceUpdaterJob < ApplicationJob
     Stock.all.each do |stock|
       quote = client.quote(stock.ticker)
       stock.update(price: quote.latest_price)
+      Order.where(user_id: User.find_by(role: 1)).sell.pending.each do |order|
+        order.update(price: quote.latest_price)
+      end
     end
   end
 end
