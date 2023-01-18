@@ -3,15 +3,15 @@
 <h1><%= @stock.ticker %></h1>
 <h2><%= @stock.company %></h2>
 <h3>USD <%= @stock.price %></h3>
-<p>There are <span><%= @stock.orders.buy.count %></span> Buy orders for this stock</p>
-<% @stock.orders.buy.each do |order| %>
+<p>There are <span><%= @stock.orders.buy.pending.count %></span> Buy orders for this stock</p>
+<% @stock.orders.buy.pending.each do |order| %>
   <span>Order No.: <%= order.id %></span>
   <span>Offer: USD <%= order.price %></span>
   <span>Qt: <%= order.quantity %></span>
 <% end %>
 
-<p>There are <span><%= @stock.orders.sell.count %></span> Sell orders for this stock</p>
-<% @stock.orders.sell.each do |order| %>
+<p>There are <span><%= @stock.orders.sell.pending.count %></span> Sell orders for this stock</p>
+<% @stock.orders.sell.pending.each do |order| %>
   <span>Order No.: <%= order.id %></span>
   <span>Asking: USD <%= order.price %></span>
   <span>Qt: <%= order.quantity %></span>

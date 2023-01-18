@@ -34,8 +34,9 @@ class OrdersController < ApplicationController
     @order.stock = @stock
     @order.price = @stock.price
     @order.quantity = quantity ? quantity.to_f : price.to_f/@stock.price.to_f
-    # debugger
-    # buy_order_fulfiller = Order.sell.where("price < ? and stock_id = ?", price, stock_id).first
+    orders = @stock.orders.where.not(user: current_user).where("price <= ? and quantity = ?", @order.price, @order.quantity)
+    active_buy_order = orders.sell.first
+    active_sell_order = orders.buy.first
     
     respond_to do |format|
       if  action == 0 and @order.price * @order.quantity > current_user.balance
@@ -46,11 +47,27 @@ class OrdersController < ApplicationController
         if action == 0
           current_user.balance -= @order.price * @order.quantity
           current_user.save
+          if active_buy_order
+            @order.update(status: 1)
+            active_buy_order.update(status: 1)
+            asset.quantity += @order.quantity
+            asset.save
+          end
         else
           asset.quantity -= @order.quantity
           asset.save
-        end 
-        format.html { redirect_to stock_details_url(@stock), notice: "Order was successfully created." } 
+          if active_sell_order
+            @order.update(status: 1)
+            active_sell_order.update(status: 1)
+            current_user.balance += @order.price * @order.quantity
+            current_user.save
+          end
+        end
+        if active_buy_order or active_sell_order
+          format.html { redirect_to stock_details_url(@stock), notice: "Order has been fulfilled." }
+        else
+          format.html { redirect_to stock_details_url(@stock), notice: "Order was successfully created." } 
+        end
       else
         format.html { render :create, notice: "Error while creating order.", status: :unprocessable_entity }
       end
