@@ -25,11 +25,17 @@ class OrdersController < ApplicationController
   def create
     action = params[:order_action].to_i
     asset = current_user.assets.find_by(stock_id: @stock.id)
-    @order = Order.new(order_params)
+    price = order_params[:price]
+    quantity = order_params[:quantity]
+    @order = Order.new
     @order.action = action
     @order.status = 0
     @order.user = current_user
     @order.stock = @stock
+    @order.price = @stock.price
+    @order.quantity = quantity ? quantity.to_f : price.to_f/@stock.price.to_f
+    # debugger
+    # buy_order_fulfiller = Order.sell.where("price < ? and stock_id = ?", price, stock_id).first
     
     respond_to do |format|
       if  action == 0 and @order.price * @order.quantity > current_user.balance
@@ -43,7 +49,7 @@ class OrdersController < ApplicationController
         else
           asset.quantity -= @order.quantity
           asset.save
-        end
+        end 
         format.html { redirect_to stock_details_url(@stock), notice: "Order was successfully created." } 
       else
         format.html { render :create, notice: "Error while creating order.", status: :unprocessable_entity }

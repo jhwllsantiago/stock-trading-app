@@ -18,42 +18,58 @@
 <% end %>
 
 <div style="display: flex; padding: 20px;">
+  <div>
   <%= form_with model: @order, url: create_order_path(0, @stock.id), method: :post do |form| %>
-    <h3>Your Balance: <%= current_user.balance %></h3>
+    <h3>Your Balance: <%= current_user.balance.floor(4) %></h3>
 
     <div>
       <%= form.label :price, style: "display: block" %>
-      <%= form.number_field :price %>
+      <%= form.number_field :price, value: @stock.price, step: :any %>
     </div>
-
+    
+    <div>
+      <%= form.submit "Buy #{@stock.ticker}" %>
+    </div>
+  <% end %>
+  <br>
+  <%= form_with model: @order, url: create_order_path(0, @stock.id), method: :post do |form| %>
     <div>
       <%= form.label :quantity, style: "display: block" %>
-      <%= form.number_field :quantity %>
+      <%= form.number_field :quantity, step: :any, placeholder: "Max #{(current_user.balance/@stock.price).floor(4)} units" %>
     </div>
 
     <div>
       <%= form.submit "Buy #{@stock.ticker}" %>
     </div>
   <% end %>
+  </div>
 
   <% if @asset %>
+    <div>
     <%= form_with model: @order, url: create_order_path(1, @stock.id), method: :post do |form| %>
-      <h3>Avaiable <%= @stock.ticker %> assets: <%= @asset.quantity %></h3>
+      <h3>Avaiable <%= @stock.ticker %> assets: <%= @asset.quantity.floor(4) %></h3>
 
       <div>
         <%= form.label :price, style: "display: block" %>
-        <%= form.number_field :price %>
+        <%= form.number_field :price, step: :any, placeholder: "Max USD #{(@asset.quantity * @stock.price).floor(4)}" %>
       </div>
 
       <div>
+        <%= form.submit "Sell #{@stock.ticker}" %>
+      </div>
+    <% end %>
+    <br>
+    <%= form_with model: @order, url: create_order_path(1, @stock.id), method: :post do |form| %>
+      <div>
         <%= form.label :quantity, style: "display: block" %>
-        <%= form.number_field :quantity %>
+        <%= form.number_field :quantity, step: :any, value: @asset.quantity.floor(4) %>
       </div>
 
       <div>
         <%= form.submit "Sell #{@stock.ticker}" %>
       </div>
     <% end %> 
+    </div> 
   <% end %>
   
 </div>
