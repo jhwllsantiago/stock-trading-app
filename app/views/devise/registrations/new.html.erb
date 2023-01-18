@@ -16,8 +16,10 @@
 
     <div class="sign-up-body">
 
-
-      <h2 class="sign-up-title">Sign up</h2>
+      
+      <h2 class="sign-up-title">
+        <%= current_user&.admin? ? "Add User" : "Sign Up" %>
+      </h2>
 
       <div class="field">
         <%= f.label :first_name %><br />
@@ -46,13 +48,16 @@
         <%= f.label :password_confirmation %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
+      
 
       <div class="actions">
-        <%= f.submit "Sign up" %>
-        <p>Already have an account? <%= link_to "Log in", unauthenticated_root_path%></p>
+          <%= f.submit "Save" %>
+        <% if !current_user&.admin? %> 
+          <p>Already have an account? <%= link_to "Log in", unauthenticated_root_path%></p>
+        <% end %>
       </div>
 
-    
+      
 
 
 
