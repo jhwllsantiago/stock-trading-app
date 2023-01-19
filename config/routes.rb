@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  resources :stocks do
-    resources :orders
-  end
+  # resources :stocks do
+  #   resources :orders
+  # end
+  get "stocks", to: "stocks#index", as: "stocks"
+  get "stocks/:id", to: "stocks#show", as: "stock_details"
   devise_for :users, controllers: {
     sessions: "users/sessions",
     registrations: "users/registrations"

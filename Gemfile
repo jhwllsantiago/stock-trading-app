@@ -47,7 +47,12 @@ gem "sassc-rails"
 
 # User Devise for user management
 gem "devise"
+
+# Downgrade from 2.8.0
 gem "mail", "~> 2.7.1"
+
+# IEX for stocks
+gem 'iex-ruby-client'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
