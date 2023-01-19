@@ -31,8 +31,26 @@
   overflow: auto
  }
 
- @media only screen and (max-width: 600px) {
+ @media screen and (max-width: 116.25em) {
   html {
-    background-color: lightblue;
+    font-size: 55%;
+  }
+}
+
+@media screen and (max-width: 105em) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media screen and (max-width: 93.75em) {
+  html {
+    font-size: 45%;
+  }
+}
+
+@media screen and (max-width: 85em) {
+  html {
+    font-size: 40%;
   }
 }

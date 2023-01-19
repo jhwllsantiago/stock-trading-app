@@ -2,27 +2,31 @@
 
 <h1>Stocks</h1>
 
-  <div class="stock-table-header">
+<div class="stock-index-main">
+  <div class="stock-index-header">
     <h1>NAME</h1>
     <h1>TICKER</h1>
     <h1>PRICE</h1>
   </div>
   
-  <% @stocks.each do |stock| %>
-  <div class="stock-table">
-      <div class="stock-name">
-        <h2><%= stock.company %></h2>
-      </div>
-      <div class="stock-ticker">
-        <h2><%= stock.ticker %></h2>
-      </div>
-      <div class="stock-price">
-        <h2>$<%= stock.price %></h2>
-      </div>
+  <div class="stock-index-container">
+    <div class ="stock-index-name">
+    <% @stocks.each do |stock| %>
+          <h2><%= stock.company %></h2>
+      <% end %>
+    </div>
+    <div class ="stock-index-ticker">
+    <% @stocks.each do |stock| %>
+          <h2><%= stock.ticker %></h2>
+      <% end %>
+    </div>
+    <div class ="stock-index-price">
+    <% @stocks.each do |stock| %>
+          <h2><%= stock.price %></h2>
+      <% end %>
+    </div>
   </div>
+</div>
 
-    <% end %>
-
-
-<%= link_to "New stock", new_stock_path %>
+<%#= link_to "New stock", new_stock_path %>
 <%= button_to "Sign out", destroy_user_session_path, :method => :delete %>
