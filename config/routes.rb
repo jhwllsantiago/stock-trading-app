@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       end
   end
 
-  root "pages#landing"
+  # root "pages#landing"
   get "error", to: "pages#error"
   get "admin", to: "admin#dashboard"
   get "admin/manage/:id", to: "admin#show", as: "show_user"

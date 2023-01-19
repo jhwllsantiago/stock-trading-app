@@ -30,3 +30,9 @@
   position: relative;
   overflow: auto
  }
+
+ @media only screen and (max-width: 600px) {
+  html {
+    background-color: lightblue;
+  }
+}
