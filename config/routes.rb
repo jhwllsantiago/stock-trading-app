@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   # end
   get "stocks", to: "stocks#index", as: "stocks"
   get "stocks/:id", to: "stocks#show", as: "stock_details"
+  post "orders/buy/:stock_id", to: "orders#buy", as: "buy_order"
+  post "orders/sell/:stock_id", to: "orders#sell", as: "sell_order"
   devise_for :users, controllers: {
     sessions: "users/sessions",
     registrations: "users/registrations"
