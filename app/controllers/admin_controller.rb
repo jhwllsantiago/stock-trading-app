@@ -1,5 +1,12 @@
 class AdminController < ApplicationController
     before_action :set_user, only: %i[show edit update destroy user_row approve] 
+    before_action :check_admin
+
+    def check_admin
+        if !current_user&.admin?
+            redirect_to root_path
+        end
+    end
 
     def dashboard
         @users = User.where(role: 0)
@@ -37,10 +44,6 @@ class AdminController < ApplicationController
         UserMailer.with(user: @user).approved.deliver_later
         @user.update(approved: true)
         render partial: "user_row", locals: {user: @user}, status: :ok
-    end
-
-    def user_row
-        
     end
 
     private 

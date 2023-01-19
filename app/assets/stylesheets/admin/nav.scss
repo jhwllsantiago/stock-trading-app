@@ -1,21 +1,21 @@
-.admin-nav-container {
+.user-nav-container {
     background-color: black;
     padding: 2rem 3rem;
 }
 
-.admin-nav-container,
-.admin-nav-profile {
+.user-nav-container,
+.user-nav-profile {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    & .admin-nav-profile > * {
+    & .user-nav-profile > * {
         padding: 0 0.5rem;
         color:#b0b0b0;
     }
 }
 
-.admin-nav-header {
+.user-nav-header {
     font-size: 3.5rem;
     color: #1ED1A8;
 }
