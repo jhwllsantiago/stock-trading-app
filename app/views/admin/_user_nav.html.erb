@@ -1,0 +1,13 @@
+<div class='user-nav-container'>
+    <h1 class='user-nav-header'>
+        <% current_user.admin? ? "User Management" : "User Dashboard" %>
+    </h1>
+
+    <div class='user-nav-profile'>
+    <%= image_tag("dp.png", :class => "nav-dp") %>
+    <span><%= current_user.email %></span>
+    <%= button_to "Sign out", destroy_user_session_path, :method => :delete, :class => 'user-row-actions sign-out-btn' %>
+    </div>
+
+</div>
+

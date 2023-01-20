@@ -20,6 +20,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     if !current_user || current_user.admin?
       build_resource(sign_up_params)
+      
+      if current_user&.admin?
+        resource.approved = true
+      end
 
     resource.save
     yield resource if block_given?
@@ -91,13 +95,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   if current_user.admin?
-  #     admin_path
-  #   else
-  #     root_path
-  #   end
-  # end
+  def after_sign_up_path_for(resource)
+    if current_user.admin?
+      admin_path
+    else
+      root_path
+    end
+  end
 
   # # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)

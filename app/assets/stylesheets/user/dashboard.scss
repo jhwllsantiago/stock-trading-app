@@ -1,0 +1,57 @@
+.user-dashboard {
+    background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("signup.jpg");
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+}
+
+.user-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 5rem;
+    justify-items: center;
+    align-items: center;
+    height: 70vh;
+    width: 80%;
+}
+
+.user-features {
+    margin: auto;
+    margin-top: 5%;
+}
+
+.user-feature {
+    padding: 3rem;
+    background-color: #1ED1A8;
+    border-radius: 2rem;
+    width: 60%;
+    height: 60%;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    transition: all .5s;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.05);
+      }
+}
+
+.user-feature span {
+    font-size: 3rem;
+    color: black;
+}
+
+.user-feature-link,
+.user-feature-link:link,
+.user-feature-link:visited {
+    text-decoration: none;
+    color: black;
+    font-size: 2rem;
+}
+
+.feature-icon {
+    height: 3rem;
+}

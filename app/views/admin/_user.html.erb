@@ -1,11 +1,35 @@
-<p>
-    <%= @user.first_name %>
-    <%= @user.last_name %>
-</p>
+<div class='user-profile-container'>
 
-</p>
-<p>
-    <%= @user.email %>
-</p>
+<%= image_tag("dp.png", :class => "user-dp") %>
+    
+<div class='user-profile'>
+    <div class='user-profile-details'>
+        <strong><p class='user-profile-name'>
+            <%= @user.first_name %>
+            <%= @user.last_name %>
+        </p></strong>
+        <p class='user-profile-email'>
+            <%= @user.email %>
+        </p>
+        <br/>
+        <p class='user-profile-balance'>
+            Balance: <%= @user.balance %> 
+        </p>
+    </div>
+    <div class='show-user-actions'>
+        <%= link_to "Edit Profile", edit_user_path(@user) %>
+        <%= button_to "Delete Profile", destroy_user_path, method: :delete, class: 'delete-user-btn' %>
+    </div>
+</div>
+
+</div>
+
+# <%= render 'transactions' %>
+
+# <%= render 'portfolio' %>
+
+
+
+
 
 

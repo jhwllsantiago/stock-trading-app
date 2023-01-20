@@ -6,6 +6,9 @@ class User < ApplicationRecord
   validates :first_name, :last_name, presence: true
   enum role: [:trader, :admin]
   has_many :orders
+  has_many :assets
+  has_many :buyer_transactions, class_name: 'Transaction', foreign_key: 'buyer_id'
+  has_many :seller_transactions, class_name: 'Transaction', foreign_key: 'seller_id'
 
   def active_for_authentication? 
     super && approved?

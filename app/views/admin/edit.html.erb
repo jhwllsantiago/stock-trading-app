@@ -1,15 +1,27 @@
-<h2>Edit</h2>
+<div class="sign-up-container">
 
-<%= form_for(:user, url: update_user_url, method: :patch) do |f| %>
+<%= form_for(:user, url: update_user_url, method: :patch, :html => {:class => 'sign-up-form', 'target' => 'signup'}) do |f| %>
+
+  <div class="sign-up-content">
+
+  <div class="sign-up-header">
+  <p>ATLAS</p>
+  <%= image_tag("ai3.png", :class => "sign-up-logo") %>
+  <p>INDEX</p>
+  </div>
+
+  <div class="sign-up-body">
+
+  <h2 class="sign-up-title">Edit</h2>
 
   <div class="field">
     <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true %>
+    <%= f.text_field :first_name, autofocus: true, maxlength: 20 %>
   </div>
 
   <div class="field">
     <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
+    <%= f.text_field :last_name, maxlength: 20 %>
   </div>
 
   <div class="field">
@@ -19,7 +31,10 @@
 
   <div class="actions">
     <%= f.submit "Update" %>
+    <p><%= link_to "Back", :back %></p>
   </div>
 <% end %>
 
-<%= link_to "Back", :back %>
+</div>
+</div>
+</div>

@@ -1,0 +1,154 @@
+.admin-container {
+    padding: 2rem;
+    color: #b0b0b0;
+    height: 90vh;
+    width: 100vw;
+    background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("signup.jpg");
+    background-size: cover;
+}
+
+.admin-features {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 3rem;
+    justify-items: center;
+}
+
+.admin-features,
+.users-container {
+    margin-top: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.admin-feature {
+    padding: 3rem;
+    background-color: #1ED1A8;
+    border-radius: 2rem;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.admin-feature span {
+    font-size: 2rem;
+    color: black;
+}
+
+.admin-feature-link,
+.admin-feature-link:link,
+.admin-feature-link:visited {
+    text-decoration: none;
+    color: black;
+    font-size: 2rem;
+}
+
+.feature-icon {
+    height: 3rem;
+}
+
+.add-user-btn {
+    transition: all .5s;
+
+    &:hover {
+        transform: scale(1.05);
+      }
+}
+
+.users-container {
+    border: 2px solid #1ED1A8;
+    border-radius: 2rem;
+    height: 60vh;
+    background-color: #3D3A4B;
+}
+
+.users-headers,
+.user-row-container {
+    padding: 1rem 3rem;
+}
+
+.users-headers,
+.user-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);    
+    grid-template-rows: auto;
+    align-items: center;
+}
+
+.users-headers h2 {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-top: 1rem;
+}
+
+.users-headers-actions,
+.users-headers-status,
+.user-row-status {
+    justify-self: center;
+}
+
+.user-container {
+    overflow-y: auto;
+    height: 50vh;
+}
+
+.user-container {
+    padding: 0.5rem 0;
+}
+
+.user-row-container {
+    transition: all .5s;
+
+    &:hover {
+        background-color: #25232e4d;
+      }
+}
+
+.user-row p {
+    font-size: 1.5rem;
+}
+
+.user-link,
+.user-link:visited,
+.users-action-btns,
+.users-action-btns:visited {
+    text-decoration: none;
+}
+
+.user-link,
+.user-link:visited {
+    color: #b0b0b0;
+}
+
+.user-row-actions {
+    padding: 0.75rem 2rem;
+    background-color: #1ED1A8;
+    border-radius: 0.5rem;
+    justify-self: center;
+    transition: all .5s;
+
+    &:hover {
+        transform: scale(1.1);
+      }
+}
+
+.users-action-btns {
+    color: black;
+}
+
+.sign-out-btn {
+    border: none;
+    cursor: pointer;
+}
+
+// .user-details {
+//     display: grid;
+//     grid-template-columns: repeat(4, 1fr);
+// }
+
+
+
+
+    

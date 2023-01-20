@@ -10,6 +10,8 @@ class StocksController < ApplicationController
 
   # GET /stocks/1 or /stocks/1.json
   def show
+    @order = Order.new
+    @asset = current_user.assets.find_by(stock_id: @stock.id)
   end
 
   private

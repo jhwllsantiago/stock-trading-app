@@ -1,0 +1,25 @@
+.user-nav-container {
+    background-color: black;
+    padding: 2rem 3rem;
+}
+
+.user-nav-container,
+.user-nav-profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & .user-nav-profile > * {
+        padding: 0 0.5rem;
+        color:#b0b0b0;
+    }
+}
+
+.user-nav-header {
+    font-size: 3.5rem;
+    color: #1ED1A8;
+}
+
+.nav-dp {
+    height: 3rem;
+}
