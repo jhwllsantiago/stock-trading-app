@@ -26,14 +26,14 @@
         <% end %>
       </div>
       <div class ="stock-index-ticker">
-      <h1>TICKER</h1>
-      <% @stocks.each do |stock| %>
+        <h1>TICKER</h1>
+        <% @stocks.each do |stock| %>
             <h2><%= stock.ticker %></h2>
         <% end %>
       </div>
       <div class ="stock-index-price">
-      <h1>PRICE</h1>
-      <% @stocks.each do |stock| %>
+        <h1>PRICE</h1>
+        <% @stocks.each do |stock| %>
             <h2><%= stock.price %></h2>
         <% end %>
       </div>
@@ -43,16 +43,19 @@
       <h1>ORDER BOOK</h1>
       <div class="stock-index-order-buy">
         <div class="buy-column">
+        <h1>ORDER</h1>
         <% @buys.each do |order| %>
           <p><%=  order.action %></p>
         <% end %>
         </div>
         <div class="buy-column">
+        <h1>PRICE</h1>
         <% @buys.each do |order| %>
           <p><%=  order.price %></p>
         <% end %>
         </div>
         <div class="buy-column">
+        <h1>QUANTITY</h1>
         <% @buys.each do |order| %>
           <p><%=  order.quantity %></p>
         <% end %>
@@ -60,16 +63,19 @@
       </div>
       <div class="stock-index-order-sell">
         <div class="sell-column">
+          <h1>ORDER</h1>
           <% @sells.each do |order| %>
             <p><%=  order.action %></p>
           <% end %>
         </div>
         <div class="sell-column">
+          <h1>PRICE</h1>
           <% @sells.each do |order| %>
             <p><%=  order.price %></p>
           <% end %>
         </div>
         <div class="sell-column">
+          <h1>QUANTITY</h1> 
           <% @sells.each do |order| %>
             <p><%=  order.quantity %></p>
           <% end %>
