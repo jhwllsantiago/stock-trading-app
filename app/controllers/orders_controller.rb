@@ -44,6 +44,7 @@ class OrdersController < ApplicationController
             if accumulated_quantity >= @order.quantity
               break
             elsif order.quantity >= required_quantity
+              Transaction.create(buyer: current_user, seller: order.user, stock: @stock, price: @order.price, quantity: required_quantity)
               order.user.update(balance: order.user.balance + required_quantity * order.price)
               order.quantity -= required_quantity
               order.status = 1 if order.quantity == 0.0
@@ -51,6 +52,7 @@ class OrdersController < ApplicationController
               accumulated_quantity += required_quantity
               required_quantity = 0.0
             elsif order.quantity < required_quantity
+              Transaction.create(buyer: current_user, seller: order.user, stock: @stock, price: @order.price, quantity: order.quantity)
               required_quantity -= order.quantity
               accumulated_quantity += order.quantity
               order.user.update(balance: order.user.balance + order.quantity * order.price)
@@ -91,6 +93,7 @@ class OrdersController < ApplicationController
             if accumulated_quantity >= @order.quantity
               break
             elsif order.quantity >= required_quantity
+              Transaction.create(buyer: order.user, seller: current_user, stock: @stock, price: @order.price, quantity: required_quantity)
               asset.update(quantity: asset.quantity + required_quantity)
               order.quantity -= required_quantity
               order.status = 1 if order.quantity == 0.0
@@ -98,6 +101,7 @@ class OrdersController < ApplicationController
               accumulated_quantity += required_quantity
               required_quantity = 0.0
             elsif order.quantity < required_quantity
+              Transaction.create(buyer: order.user, seller: current_user, stock: @stock, price: @order.price, quantity: order.quantity)
               required_quantity -= order.quantity
               accumulated_quantity += order.quantity
               asset.update(quantity: asset.quantity + order.quantity)
