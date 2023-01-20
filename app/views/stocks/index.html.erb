@@ -1,6 +1,18 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Stocks</h1>
+<nav class="stock-index-nav">
+  <%= image_tag("ai3.png", :class => "stock-index-logo") %>
+  <div class="stock-index-nav-middle">
+    <p>My portfolio</p>
+    <p>Mutual funds</p>
+    |
+    <p>Support</p>
+    <p>Media</p>
+  </div >
+  <div class"stock-index-nav-right">
+    <%= button_to "Sign out", destroy_user_session_path, :method => :delete %>
+  </div>
+</nav>
 
 <div class="stock-index-main">
   <div class="stock-index-header">
@@ -10,23 +22,28 @@
   </div>
   
   <div class="stock-index-container">
-    <div class ="stock-index-name">
-    <% @stocks.each do |stock| %>
-          <h2><%= stock.company %></h2>
-      <% end %>
+    <div class="stock-index-table">
+      <div class ="stock-index-name">
+      <% @stocks.each do |stock| %>
+            <h2><%= stock.company %></h2>
+        <% end %>
+      </div>
+      <div class ="stock-index-ticker">
+      <% @stocks.each do |stock| %>
+            <h2><%= stock.ticker %></h2>
+        <% end %>
+      </div>
+      <div class ="stock-index-price">
+      <% @stocks.each do |stock| %>
+            <h2><%= stock.price %></h2>
+        <% end %>
+      </div>
     </div>
-    <div class ="stock-index-ticker">
-    <% @stocks.each do |stock| %>
-          <h2><%= stock.ticker %></h2>
+  </div>
+  <div class="stock-index-order">
+      <%= @orders.each do |order| %>
+        <%= order.action= "sell"%>
       <% end %>
-    </div>
-    <div class ="stock-index-price">
-    <% @stocks.each do |stock| %>
-          <h2><%= stock.price %></h2>
-      <% end %>
-    </div>
   </div>
 </div>
 
-<%#= link_to "New stock", new_stock_path %>
-<%= button_to "Sign out", destroy_user_session_path, :method => :delete %>

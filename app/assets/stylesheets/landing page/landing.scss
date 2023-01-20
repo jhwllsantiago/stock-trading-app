@@ -2,6 +2,9 @@
   background-color: #3D3A4B;
   height: 100vh;
   width: 100vw;
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-between;
 }
 
 .nav-container {
@@ -11,7 +14,7 @@
   margin: 0 10rem 0 10rem;
   padding: 1rem 0 1rem 0;
   border-bottom: 2px solid #b0b0b0;
-  height: 9vh;
+  height: 9rem;
 }
 
 .nav-items-left, .nav-items-right {
@@ -55,6 +58,7 @@
   }
 
   & input[type="submit"] {
+    height: 3rem;
     background-color: #1ED1A8;
     border: none;
     padding: .75rem;
@@ -70,7 +74,7 @@
   }
 
   & input[type="email"], & input[type="password"] {
-    height: 2.5rem;
+    height: 3rem;
     padding: 1rem;
     border-radius: .5rem;
     border: none;
@@ -277,6 +281,7 @@
   display: flex;
   gap: 2rem;
   margin: 0 10rem 0 10rem;
+  // margin-bottom: 2rem;
 
   .footer-item {
     display: flex;
@@ -328,6 +333,7 @@
     }
 
     input {
+      height: 3rem;
       border: none;
       padding: .5rem;
       width: 26.75rem;
@@ -337,7 +343,7 @@
     button {
       cursor: pointer;
       position: relative;
-      height: 2.7rem;
+      height: 3rem;
       width: 3rem;
       background-color: #1ED1A8;
       border: none;
@@ -391,16 +397,6 @@
   }
 }
 
-.overlay {
-  backdrop-filter: blur(6px);
-  position: absolute;
-  background-color: #00000090;
-  height: 100vh;
-  width: 100vw;
-  top: 0;
-  left: 0;
-  z-index: 19;
-}
 
 .notifications {
   position: absolute;
