@@ -4,7 +4,8 @@ class StocksController < ApplicationController
   # GET /stocks or /stocks.json
   def index
     @stocks = Stock.all
-    @orders = Order.pending
+    @buys = Order.buy.pending
+    @sells = Order.sell.pending
   end
 
   # GET /stocks/1 or /stocks/1.json

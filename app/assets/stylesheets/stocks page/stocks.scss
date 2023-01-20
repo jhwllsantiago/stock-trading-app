@@ -75,6 +75,37 @@
   overflow-y: auto;
   border-left: none;
 
+  .stock-index-order-buy {
+    // border-top: 2px green solid;
+    width: 25rem;
+    height: 39rem;
+    display: flex;
+    justify-content: space-between;
+    overflow-y: auto;
+    border-left: none;
+
+    & .buy-column {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .stock-index-order-sell {
+    border-top: 2px green solid;
+    width: 25rem;
+    height: 39rem;
+    display: flex;
+    justify-content: space-between;
+    overflow-y: auto;
+    border-left: none;
+
+    & .sell-column {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
   & h1 {
     border-bottom: 2px green solid;
   }

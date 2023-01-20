@@ -41,9 +41,43 @@
   </div>
   <div class="stock-index-order">
       <h1>ORDER BOOK</h1>
-      <%= @orders.each do |order| %>
-        <%= render order %>
-      <% end %>
+      <div class="stock-index-order-buy">
+        <div class="buy-column">
+        <% @buys.each do |order| %>
+          <p><%=  order.action %></p>
+        <% end %>
+        </div>
+        <div class="buy-column">
+        <% @buys.each do |order| %>
+          <p><%=  order.price %></p>
+        <% end %>
+        </div>
+        <div class="buy-column">
+        <% @buys.each do |order| %>
+          <p><%=  order.quantity %></p>
+        <% end %>
+        </div>
+      </div>
+      <div class="stock-index-order-sell">
+        <div class="sell-column">
+          <% @sells.each do |order| %>
+            <p><%=  order.action %></p>
+          <% end %>
+        </div>
+        <div class="sell-column">
+          <% @sells.each do |order| %>
+            <p><%=  order.price %></p>
+          <% end %>
+        </div>
+        <div class="sell-column">
+          <% @sells.each do |order| %>
+            <p><%=  order.quantity %></p>
+          <% end %>
+        </div>  
+      </div>
+  </div>
+  <div>
+    Insert transactions here
   </div>
 </div>
 
