@@ -4,9 +4,11 @@
   <%= image_tag("ai3.png", :class => "stock-index-logo") %>
   <div class="stock-index-nav-middle">
     <p>My portfolio</p>
+    <p>|</p>
     <p>Mutual funds</p>
-    |
+    <p>|</p>
     <p>Support</p>
+    <p>|</p>
     <p>Media</p>
   </div >
   <div class"stock-index-nav-right">
@@ -15,25 +17,22 @@
 </nav>
 
 <div class="stock-index-main">
-  <div class="stock-index-header">
-    <h1>NAME</h1>
-    <h1>TICKER</h1>
-    <h1>PRICE</h1>
-  </div>
-  
   <div class="stock-index-container">
     <div class="stock-index-table">
       <div class ="stock-index-name">
+      <h1>NAME</h1>
       <% @stocks.each do |stock| %>
             <h2><%= stock.company %></h2>
         <% end %>
       </div>
       <div class ="stock-index-ticker">
+      <h1>TICKER</h1>
       <% @stocks.each do |stock| %>
             <h2><%= stock.ticker %></h2>
         <% end %>
       </div>
       <div class ="stock-index-price">
+      <h1>PRICE</h1>
       <% @stocks.each do |stock| %>
             <h2><%= stock.price %></h2>
         <% end %>
@@ -41,8 +40,9 @@
     </div>
   </div>
   <div class="stock-index-order">
+      <h1>ORDER BOOK</h1>
       <%= @orders.each do |order| %>
-        <%= order.action= "sell"%>
+        <%= render order %>
       <% end %>
   </div>
 </div>
