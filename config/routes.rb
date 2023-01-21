@@ -32,4 +32,6 @@ Rails.application.routes.draw do
   patch "admin/manage/:id", to: "admin#update", as: "update_user"
   delete "admin/manage/:id", to: "admin#destroy", as: "destroy_user"
   patch "admin/manage/:id/approve", to: "admin#approve", as: "approve_user"
+  post 'deposit', to: 'user#deposit'
+  post 'withdraw', to: 'user#withdraw'
 end

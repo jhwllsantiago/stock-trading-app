@@ -21,7 +21,9 @@
     margin-top: 5%;
 }
 
-.user-feature {
+.user-feature,
+.user-feature a:link,
+.user-feature a:visited {
     padding: 3rem;
     background-color: #1ED1A8;
     border-radius: 2rem;
@@ -32,7 +34,10 @@
     justify-content: space-around;
     align-items: center;
     transition: all .5s;
+    text-decoration: none;
     cursor: pointer;
+    color: black;
+    font-size: 3rem;
 
     &:hover {
         transform: scale(1.05);

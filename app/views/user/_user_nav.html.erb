@@ -4,6 +4,7 @@
     <div class='user-nav-profile'>
     <%= image_tag("dp.png", :class => "nav-dp") %>
     <span><%= current_user.email %></span>
+    <span><strong><%= current_user.balance %></strong></span>
     <%= button_to "Sign out", destroy_user_session_path, :method => :delete, :class => 'user-row-actions sign-out-btn' %>
     </div>
 
