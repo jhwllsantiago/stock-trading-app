@@ -43,7 +43,6 @@
     padding: 1rem;
     border-bottom: 2px green solid;
     width: 100%;
-    // padding: 0;
   }
 
   & h2 {
@@ -51,28 +50,47 @@
   }
 }
 
-.stock-index-name, .stock-index-ticker, .stock-index-price, .stock-index-order {
+.stock-index-name {
   display: flex;
   flex-direction: column;
-  // gap: 1rem;
-  // padding: 2rem 0;
   border: 2px green solid;
-  width: 25rem;
-}
-
-.stock-index-name, .stock-index-ticker {
   border-right: none;
+
+  & h1 {
+    text-align: center;
+  }
+
+  
+  & a {
+    display: flex;
+    text-decoration: none;
+    color: white;
+    gap: 1rem;
+    font-size: 1.5rem;
+    padding: .5rem;
+  }
 }
 
-.stock-index-ticker {
-  width: 15rem;
-  text-align: center;
+.stock-index-stocks {
+  padding: .75rem 1rem 0 1rem;
+  display: flex;
+  transition: 1s all;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #3D3A4B;
+  }
+
+  & p {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    width: 10rem;
+    padding: .5rem;
+  }
 }
 
-.stock-index-price {
-  width: 15rem;
-  text-align: end;
-}
+
 
 .stock-index-order {
   width: 30.5rem;
@@ -81,6 +99,7 @@
   flex-direction: column;
   overflow-y: auto;
   border-left: none;
+  border: 2px green solid;
 
   & h1 {
     padding: 1rem;
@@ -186,3 +205,4 @@
     }
   }
 }
+

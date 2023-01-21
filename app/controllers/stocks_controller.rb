@@ -1,6 +1,5 @@
 class StocksController < ApplicationController
-  before_action :set_stock, only: %i[ show ]
-
+  before_action :set_stock, only: %i[ show turbo_show]
   # GET /stocks or /stocks.json
   def index
     @stocks = Stock.all
@@ -12,6 +11,12 @@ class StocksController < ApplicationController
   def show
     @order = Order.new
     @asset = current_user.assets.find_by(stock_id: @stock.id)
+  end
+
+  def turbo_show
+    @order = Order.new
+    @asset = current_user.assets.find_by(stock_id: @stock.id)
+    render partial: "stock_trade_form", locals: {stock: @stock}, status: :ok
   end
 
   private

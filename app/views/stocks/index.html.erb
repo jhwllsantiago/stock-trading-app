@@ -16,29 +16,17 @@
   </div>
 </nav>
 
+
 <div class="stock-index-main">
   <div class="stock-index-container">
     <div class="stock-index-table">
       <div class ="stock-index-name">
-      <h1>NAME</h1>
-      <% @stocks.each do |stock| %>
-            <h2><%= stock.company %></h2>
-        <% end %>
-      </div>
-      <div class ="stock-index-ticker">
-        <h1>TICKER</h1>
+        <h1>STOCK</h1>
         <% @stocks.each do |stock| %>
-            <h2><%= stock.ticker %></h2>
-        <% end %>
-      </div>
-      <div class ="stock-index-price">
-        <h1>PRICE</h1>
-        <% @stocks.each do |stock| %>
-            <h2><%= stock.price %></h2>
+          <%= link_to render("stock_row", stock: stock), stock_turbo_show_path(stock), remote: true, data: {"turbo-method": :get, "turbo_frame": "stock_frame"}%>
         <% end %>
       </div>
     </div>
-  </div>
   <div class="stock-index-order">
       <h1>ORDER BOOK</h1>
       <div class="stock-index-order-buy">
@@ -83,7 +71,10 @@
       </div>
   </div>
   <div>
-    Insert transactions here
   </div>
 </div>
 
+
+<div>
+  <%= render "stock_trade_form", stock: nil %>
+</div>
