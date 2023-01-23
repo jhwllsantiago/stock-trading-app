@@ -3,8 +3,8 @@ class StocksController < ApplicationController
   # GET /stocks or /stocks.json
   def index
     @stocks = Stock.all
-    @buys = Order.buy.pending
-    @sells = Order.sell.pending
+    @buys = Order.buy.pending.order(created_at: :desc)
+    @sells = Order.sell.pending.order(created_at: :desc)
     @transactions = Transaction.all
   end
 
@@ -15,17 +15,14 @@ class StocksController < ApplicationController
   end
 
   def turbo_show
+    @stocks = Stock.all
+    @buys = Order.buy.pending.order(created_at: :desc)
+    @sells = Order.sell.pending.order(created_at: :desc)
+    @transactions = Transaction.all
     @order = Order.new
     @asset = current_user.assets.find_by(stock_id: @stock.id)
-    render partial: "stock_trade_form", locals: {stock: @stock}, status: :ok
-    # transaction_show
+    render partial: "index", status: :ok
   end
-
-  # def transaction_show
-  #   @transactions = Transaction.all
-  #   render partial: "stock_transactions", locals: {transactions: @transactions}, status: :ok
-  # end
-
 
   private
     def set_stock
