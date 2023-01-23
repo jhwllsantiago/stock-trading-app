@@ -1,4 +1,4 @@
-<p style="color: green"><%= notice %></p>
+
 
 <nav class="stock-index-nav">
   <%= image_tag("ai3.png", :class => "stock-index-logo") %>
@@ -74,7 +74,28 @@
   </div>
 </div>
 
+<div class='stock-index-trade-order'>
+  <div class="stock-trade-container">
+    <%= render "stock_trade_form", stock: nil %>
+  </div>
 
-<div>
-  <%= render "stock_trade_form", stock: nil %>
+  <div class="transactions-container">
+      <h1>TRANSACTIONS</h1>
+      <div class="transaction-details">
+        <div class="transaction-details-header">
+          <h3>PRICE</h3>
+          <h3>QUANTITY</h3>
+          <h3>ORDERED</h3>
+        </div>
+        <% @transactions.each do |transaction| %>
+        <div class="transaction-row">
+          <p><%= transaction.price %></p>
+          <p><%= transaction.quantity %></p>
+          <p><%= transaction.created_at.strftime("%H:%M:%S %a %m, %e") %></p>
+        </div>
+      <% end %>
+      </div>
+  </div>
+</div>
+
 </div>

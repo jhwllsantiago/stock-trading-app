@@ -5,6 +5,7 @@ class StocksController < ApplicationController
     @stocks = Stock.all
     @buys = Order.buy.pending
     @sells = Order.sell.pending
+    @transactions = Transaction.all
   end
 
   # GET /stocks/1 or /stocks/1.json
