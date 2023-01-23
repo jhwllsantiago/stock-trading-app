@@ -1,16 +1,24 @@
-// .stock-index-main-container {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   // align-items: center;
-// }
-
 .stock-index-nav {
   background-color: #3D3A4B;;
   padding: 1.5rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  & button {
+    padding: 1rem;
+    color: white;
+    text-transform: uppercase;
+    background-color: #1ED1A8;
+    border-radius: .5rem;
+    border: none;
+    transition: .5s all;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
 
   & .stock-index-logo {
     height: 4rem;
@@ -28,6 +36,15 @@
     & p {
       cursor: pointer;
       font-size: 2rem;
+      transition: .5s all;
+
+      &:hover {
+        color: #1ED1A8;
+      }
+
+      &:nth-child(2), &:nth-child(4), &:nth-child(6)  {
+        pointer-events: none;
+      }
     }
   }
 }
