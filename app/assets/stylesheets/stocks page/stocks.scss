@@ -1,3 +1,10 @@
+// .stock-index-main-container {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   // align-items: center;
+// }
+
 .stock-index-nav {
   background-color: #3D3A4B;;
   padding: 1.5rem 2rem;
@@ -26,8 +33,8 @@
 }
 
 .stock-index-main {
-  // padding: 2rem;
   display: flex;
+  justify-content: center;
   background-color: #272531;
   color: white;
 }
@@ -51,7 +58,8 @@
 }
 
 .stock-index-name {
-  width: 15rem;
+  height: 100%;
+  width: 20rem;
   display: flex;
   flex-direction: column;
   border: 2px #1ED1A8 solid;
@@ -100,10 +108,12 @@
   }
 }
 
+.stock-index-order-container {
+  display: flex;
+}
 
 
 .stock-index-order {
-  width: 30.5rem;
   height: 97.75rem;
   display: flex;
   flex-direction: column;
@@ -118,31 +128,35 @@
   }
 
   .stock-index-order-buy {
-    width: 30rem;
-    height: 45rem;
+    width:39.50rem;
     display: flex;
-    justify-content: space-between;
-    overflow-y: auto;
-    border-left: none;
+    flex-direction: column;
 
-    
-    &::-webkit-scrollbar {
-      width: 5px;
-    }
+    & .buy-column-container {
+      display: flex;
+      justify-content: center;
+      gap: 5rem;
+      overflow-y: auto;
 
-    &::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: darkgrey;
-      outline: 1px solid slategrey;
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+  
+      &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      }
+  
+      &::-webkit-scrollbar-thumb {
+        background-color: darkgrey;
+        outline: 1px solid slategrey;
+      }
     }
 
     & .buy-column {
+      height: 87rem;
+      margin-top: 1rem;
       display: flex;
       flex-direction: column;
-
 
       &:nth-child(1) {
         border-left: none;
@@ -158,6 +172,7 @@
       }
 
       & p {
+        color: #16866c;
         font-size: 1.5rem;
         padding: .5rem 1rem;
         width: 100%;
@@ -166,32 +181,37 @@
   }
 
   .stock-index-order-sell {
-    border-top: 2px #1ED1A8 solid;
-    width: 30rem;
-    height: 45rem;
+    border-left: 2px #1ED1A8 solid;
+    width: 39.5rem;
     display: flex;
-    justify-content: space-between;
-    overflow-y: auto;
-    border-left: none;
+    flex-direction: column;
 
-    &::-webkit-scrollbar {
-      width: 5px;
-    }
 
-    &::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    }
+    & .sell-column-container {
+      display: flex;
+      justify-content: center;
+      gap: 5rem;
+      overflow-y: auto;
 
-    &::-webkit-scrollbar-thumb {
-      background-color: darkgrey;
-      outline: 1px solid slategrey;
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+  
+      &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      }
+  
+      &::-webkit-scrollbar-thumb {
+        background-color: darkgrey;
+        outline: 1px solid slategrey;
+      }
     }
 
     & .sell-column {
+      height: 87rem;
       margin-top: 1rem;
       display: flex;
       flex-direction: column;
-
 
       &:nth-child(1) {
         border-left: none;
@@ -207,6 +227,7 @@
       }
 
       & p {
+        color: #c80000;
         font-size: 1.5rem;
         padding: .5rem 1rem;
         width: 100%;
@@ -287,7 +308,9 @@
   border: 2px #1ED1A8 solid;
   border-left: none;
   border-top: none;
-  height: 100%;
+  height: 63.2rem;
+
+
 
   & h1 {
     padding: 1rem;
@@ -307,23 +330,25 @@
 }
 
 .transaction-details {
+  height: 56rem;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   
-    &::-webkit-scrollbar {
-      width: 5px;
-    }
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
 
-    &::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    }
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
 
-    &::-webkit-scrollbar-thumb {
-      background-color: darkgrey;
-      outline: 1px solid slategrey;
-    }
+  &::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+  }
+ 
 
   & .transaction-row {
     padding: .725rem;
