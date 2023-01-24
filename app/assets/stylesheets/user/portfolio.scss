@@ -42,7 +42,7 @@
 }
 
 .transaction-headers,
-.transaction-details {
+.transactions-details {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 3rem;
@@ -60,11 +60,11 @@
 }
 
 .user-asset-container,
-.transaction-details-container {
+.transactions-details-container {
     overflow-y: auto;
 }
 
-.transaction-details-container {
+.transactions-details-container {
     height: 20vh;
 }
 
@@ -85,8 +85,8 @@
     margin-top: 9.6rem;
 }
 
-.transaction-details,
+.transactions-details,
 .asset-container {
-    padding: 1.5rem 0;
+    padding: 0.5rem 0;
 }
 
