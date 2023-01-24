@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "dashboard", to: "user#dashboard"
   get "portfolio", to: "user#portfolio", as: "portfolio"
 
+  get "stocks/turbo/:id", to: "stocks#turbo_show", as: "stock_turbo_show"
   get "stocks", to: "stocks#index", as: "stocks"
   get "stocks/:id", to: "stocks#show", as: "stock_details"
   post "orders/buy/:stock_id", to: "orders#buy", as: "buy_order"

@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.price * @order.quantity > current_user.balance
-        format.html { redirect_to stock_details_url(@stock), notice: "Insufficient balance." }
+        format.html { redirect_to stock_turbo_show_url(@stock), notice: "Insufficient balance." }
       elsif @order.save
         current_user.balance -= @order.price * @order.quantity
         current_user.save
@@ -64,9 +64,9 @@ class OrdersController < ApplicationController
           @asset.quantity += accumulated_quantity
           @order.save
           @asset.save
-          format.html { redirect_to stock_details_url(@stock), notice: "Order has been #{"partially" if required_quantity > 0.0} fulfilled." }
+          format.html { redirect_to stock_turbo_show_url(@stock), notice: "Order has been #{"partially" if required_quantity > 0.0} fulfilled." }
         else
-          format.html { redirect_to stock_details_url(@stock), notice: "Order has been posted." } 
+          format.html { redirect_to stock_turbo_show_url(@stock), notice: "Order has been posted." } 
         end
       else
         format.html { render :create, notice: "Cannot process order.", status: :unprocessable_entity }
@@ -81,7 +81,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.quantity > @asset.quantity
-        format.html { redirect_to stock_details_url(@stock), notice: "Insufficient assets." }
+        format.html { redirect_to stock_turbo_show_url(@stock), notice: "Insufficient assets." }
       elsif @order.save
         @asset.quantity -= @order.quantity
         @asset.save
@@ -113,9 +113,9 @@ class OrdersController < ApplicationController
           current_user.balance += @order.price * accumulated_quantity
           @order.save
           current_user.save
-          format.html { redirect_to stock_details_url(@stock), notice: "Order has been #{"partially" if required_quantity > 0.0} fulfilled." }
+          format.html { redirect_to stock_turbo_show_url(@stock), notice: "Order has been #{"partially" if required_quantity > 0.0} fulfilled." }
         else
-          format.html { redirect_to stock_details_url(@stock), notice: "Order has been posted." } 
+          format.html { redirect_to stock_turbo_show_url(@stock), notice: "Order has been posted." } 
         end
       else
         format.html { render :create, notice: "Cannot process order.", status: :unprocessable_entity }
