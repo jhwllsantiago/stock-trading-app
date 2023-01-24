@@ -42,7 +42,7 @@
           <div class="buy-column">
           <h1>QUANTITY</h1>
           <% @buys.each do |order| %>
-            <p><%=  order.quantity.slice(3) %></p>
+            <p><%=  order.quantity.floor(4) %></p>
           <% end %>
           </div>
         </div>
@@ -59,7 +59,7 @@
             <div class="sell-column">
               <h1>QUANTITY</h1> 
               <% @sells.each do |order| %>
-                <p><%=  order.quantity %></p>
+                <p><%=  order.quantity.floor(4) %></p>
               <% end %>
             </div>  
           </div>

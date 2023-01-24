@@ -224,11 +224,17 @@
       }
     }
 
+    & .sell-column:nth-child(2) {
+      text-align: right;
+    }
+
     & .sell-column {
       height: 87rem;
       margin-top: 1rem;
       display: flex;
       flex-direction: column;
+
+      
 
       &:nth-child(1) {
         border-left: none;

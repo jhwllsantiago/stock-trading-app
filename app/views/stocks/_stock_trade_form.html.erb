@@ -2,7 +2,7 @@
   <div class="stock-frame-container">
     <div>
       <% if stock %>
-      <h3>Your Balance: <%= current_user.balance.floor(4) %></h3>
+      <h3>Your Balance: <%= current_user.balance.floor(4).to_s %></h3>
         <div class="stock-frame-buy">
           <%= form_with model: @order, url: buy_order_path(stock.id), method: :post do |form| %>
 

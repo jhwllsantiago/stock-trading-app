@@ -3,8 +3,8 @@ class StocksController < ApplicationController
   # GET /stocks or /stocks.json
   def index
     @stocks = Stock.all
-    @buys = Order.buy.pending.order(created_at: :desc)
-    @sells = Order.sell.pending.order(created_at: :desc)
+    @buys = Order.buy.pending.includes(:user).order("users.role")
+    @sells = Order.sell.pending.includes(:user).order("users.role")
     @transactions = Transaction.all
   end
 
@@ -16,8 +16,8 @@ class StocksController < ApplicationController
 
   def turbo_show
     @stocks = Stock.all
-    @buys = Order.buy.pending.order(created_at: :desc)
-    @sells = Order.sell.pending.order(created_at: :desc)
+    @buys = Order.buy.pending.includes(:user).order("users.role")
+    @sells = Order.sell.pending.includes(:user).order("users.role")
     @transactions = Transaction.all
     @order = Order.new
     @asset = current_user.assets.find_by(stock_id: @stock.id)
