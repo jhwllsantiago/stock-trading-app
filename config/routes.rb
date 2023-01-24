@@ -36,4 +36,5 @@ Rails.application.routes.draw do
   patch "admin/manage/:id/approve", to: "admin#approve", as: "approve_user"
   post 'deposit', to: 'user#deposit'
   post 'withdraw', to: 'user#withdraw'
+  get "admin/transactions", to: "admin#transactions", as: "admin_transactions"
 end

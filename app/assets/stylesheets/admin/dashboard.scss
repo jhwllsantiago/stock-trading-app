@@ -147,12 +147,17 @@
     cursor: pointer;
 }
 
-// .user-details {
-//     display: grid;
-//     grid-template-columns: repeat(4, 1fr);
-// }
-
-
-
+.admin-transactions-view .transactions-container {
+    background-color: #3D3A4B;
+    color: #b0b0b0;
+    border: 2px #1ED1A8 solid;
+    border-radius: 2rem;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 120%;
+    height: 80%;
+}
 
     
