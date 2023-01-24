@@ -7,7 +7,7 @@
 
   <div class='bank-form-details'>
     <div class='bank-balance'>
-      Balance: <%= render 'balance', balance: current_user.balance %>
+      Balance: <%= render 'balance', balance: current_user.balance.floor(4) %>
     </div>
 
     <div class='bank-amount'>
@@ -16,7 +16,7 @@
     </div>
 
     <div class='bank-form-save'>
-      <%= form.submit %>
+      <%= form.submit 'Save', data: {"turbo-method": :post, turbo_frame: "dashboard_frame" } %>
     </div>
     </div>
   </div>

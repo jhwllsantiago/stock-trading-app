@@ -9,13 +9,15 @@ before_action :form_params
     def deposit
         current_user.balance += form_params[:amount].to_f
         current_user.save
-        render partial: "balance", locals: {balance: current_user.balance}, status: :ok
+        render partial: "dashboard", locals: {balance: current_user.balance}, status: :ok
     end
 
     def withdraw
-        current_user.balance -= form_params[:amount].to_f
-        current_user.save
-        render partial: "balance", locals: {balance: current_user.balance}, status: :ok
+        if current_user.balance >= form_params[:amount].to_f
+            current_user.balance -= form_params[:amount].to_f
+            current_user.save
+            render partial: "dashboard", locals: {balance: current_user.balance}, status: :ok
+        end
     end
 
     def form_params

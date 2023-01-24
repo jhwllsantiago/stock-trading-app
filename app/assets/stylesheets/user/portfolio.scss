@@ -61,7 +61,15 @@
 
 .user-asset-container,
 .transaction-details-container {
-    overflow-y: scroll;
+    overflow-y: auto;
+}
+
+.transaction-details-container {
+    height: 20vh;
+}
+
+.user-asset-container {
+    height: 60vh;
 }
 
 .user-portfolio-headers,

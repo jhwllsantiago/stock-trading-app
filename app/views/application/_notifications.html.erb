@@ -1,4 +1,10 @@
-<% if alert or notice %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+<% if notice or alert %>
+  <p class="alert alert-<%= notice ? "success" : "danger" %> py-1 w-100 mx-auto text-center" id="banner">
+    <%= link_to "#{notice ? notice : alert}", nil, remote: true, class:"text-decoration-none text-#{notice ? "success" : "danger"}",
+    data: {
+      controller: "alerts",
+      action: "alerts#dismiss",
+      alerts_banner_param: "banner",
+    } %>
+  </p>
 <% end %>
