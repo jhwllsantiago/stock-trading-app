@@ -1,7 +1,7 @@
 class UserController < ApplicationController
-before_action :authenticate_user!
-before_action :set_user 
-before_action :form_params
+    before_action :authenticate_user!
+    before_action :set_user 
+    before_action :form_params
 
     def dashboard
     end

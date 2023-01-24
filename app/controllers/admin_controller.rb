@@ -1,10 +1,11 @@
 class AdminController < ApplicationController
     before_action :set_user, only: %i[show edit update destroy user_row approve] 
+    before_action :authenticate_user!
     before_action :check_admin
 
     def check_admin
         if !current_user&.admin?
-            redirect_to root_path
+            redirect_to dashboard_path
         end
     end
 
