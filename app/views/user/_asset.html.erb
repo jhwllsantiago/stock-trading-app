@@ -1,0 +1,6 @@
+<% @assets.each do |asset| %>
+    <div class='asset-container'>
+        <span><%= asset.stock.ticker %></span>
+        <span><%= asset.quantity %></span>
+    </div>
+<% end %>

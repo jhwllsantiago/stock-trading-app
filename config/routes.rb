@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # end
 
   get "dashboard", to: "user#dashboard"
+  get "portfolio", to: "user#portfolio", as: "portfolio"
 
   get "stocks", to: "stocks#index", as: "stocks"
   get "stocks/:id", to: "stocks#show", as: "stock_details"

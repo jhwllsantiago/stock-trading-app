@@ -13,6 +13,9 @@ class AdminController < ApplicationController
     end
 
     def show
+        @buy_transactions = @user.buyer_transactions
+        @sell_transactions = @user.seller_transactions
+        @assets = @user.assets
     end
     
     def edit

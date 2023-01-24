@@ -1,0 +1,84 @@
+.user-portfolio-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin: 3rem;
+    color: #b0b0b0;
+}
+
+.user-transactions,
+.user-portfolio {
+    margin: 5rem;
+    background-color: #3D3A4B;
+    height: 80vh;
+    border: 2px solid #1ED1A8;
+    border-radius: 2rem;
+}
+
+.portfolio-header-container {
+    background-color: black;
+    border-bottom: 2px solid #1ED1A8;
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    padding: 2.5rem 0;
+}
+
+.user-transactions-action {
+    width: 100%;
+    height: 30vh;
+    margin: 2rem 0;
+}
+
+.user-transactions-action h2 {
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 3rem;
+}
+
+.user-portfolio-header {
+    text-align: center;
+    font-size: 3rem;
+    letter-spacing: 0.5rem;
+    color: #1ED1A8
+}
+
+.transaction-headers,
+.transaction-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 3rem;
+    justify-items: center;
+    font-size: 2rem;
+}
+
+.user-transactions-container hr {
+    margin: 2rem 0;
+}
+
+.user-portfolio hr,
+.user-transactions-action hr {
+    margin: 0.5rem 0;
+}
+
+.user-asset-container,
+.transaction-details-container {
+    overflow-y: scroll;
+}
+
+.user-portfolio-headers,
+.asset-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 3rem;
+    justify-items: center;
+    font-size: 2rem;
+}
+
+.user-portfolio-headers {
+    margin-top: 9.6rem;
+}
+
+.transaction-details,
+.asset-container {
+    padding: 1.5rem 0;
+}
+

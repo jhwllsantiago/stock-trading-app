@@ -1,8 +1,5 @@
-<div class='admin-show-users'>
-
-<%= render "user_nav" %>
-
-<%= render "user" %>
+<div class='user-dashboard'>
+<%= render 'user_nav' %>
 
 <div class='user-portfolio-container'>
 
@@ -25,7 +22,7 @@
         <hr/>
     </div>
         <div class='transaction-details-container'>
-            <%= render 'user/buy_transaction' %>
+            <%= render 'buy_transaction' %>
         </div>
     </div>
 
@@ -44,7 +41,7 @@
         <hr/>
     </div>
         <div class='transaction-details-container'>
-            <%= render 'user/sell_transaction' %>
+            <%= render 'sell_transaction' %>
         </div>
     </div>
 
@@ -67,14 +64,10 @@
     </div>
 
     <div class='user-asset-container'>
-        <%= render 'user/asset' %>
+        <%= render 'asset' %>
     </div>
 </div>
 
-</div>
-
-<div class='back-btn'>
-<%= link_to "Back", :back %>
 </div>
 
 </div>

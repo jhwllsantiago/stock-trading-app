@@ -1,0 +1,7 @@
+<% @buy_transactions.each do |buy_transaction| %>
+    <div class='transaction-details'>
+        <span><%= buy_transaction.stock.ticker %></span>
+        <span><%= buy_transaction.price %></span>
+        <span><%= buy_transaction.quantity %></span>
+    </div>
+<% end %>

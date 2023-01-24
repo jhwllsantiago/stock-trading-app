@@ -7,7 +7,7 @@
 
   <div class='bank-form-details'>
     <div class='bank-balance'>
-      Balance: <%= current_user.balance %>
+      Balance: <%= render 'balance', balance: current_user.balance %>
     </div>
 
     <div class='bank-amount'>

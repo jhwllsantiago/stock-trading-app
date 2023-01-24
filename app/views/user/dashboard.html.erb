@@ -4,31 +4,31 @@
 <div class='user-features'>
 
   <div class='user-feature'>
-    <%= link_to 'Deposit', nil, remote: true,
+    <strong><%= link_to 'Deposit', nil, remote: true,
       data: {
         controller: "bank",
         action: "bank#deposit",
         bank_form_param: "new-deposit-form",
         bank_backdrop_param: "new-bank-backdrop"
-      } %>
+      } %></strong>
   </div>
 
   <div class='user-feature'>
-    <%= link_to 'Withdraw', nil, remote: true,
+    <strong><%= link_to 'Withdraw', nil, remote: true,
       data: {
         controller: "bank",
         action: "bank#withdraw",
         bank_form_param: "new-withdraw-form",
         bank_backdrop_param: "new-bank-backdrop"
-      } %>
+      } %></strong>
   </div>
 
   <div class='user-feature'>
-    <strong><span>Trade</span></strong>
+    <strong><%= link_to 'Trade', stocks_path %></strong>
   </div>
 
   <div class='user-feature'>
-    <strong><span>Portfolio</span></strong>
+    <strong><%= link_to 'Portfolio', portfolio_path %></strong>
   </div>
 
   <div id="new-deposit-form" class="d-none new-bank-form">

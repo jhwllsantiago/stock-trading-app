@@ -15,7 +15,7 @@
     padding: 1rem;
     display: flex;
     align-items: center;
-    width: 40%;
+    width: 47%;
     justify-content: space-around;
     border: 2px solid #1ED1A8;
     border-radius: 2rem;
@@ -76,3 +76,57 @@
       }
 }
 
+.back-btn a {
+    cursor: pointer;
+    padding: 0.75rem 2rem;
+    background-color: #1ED1A8;
+    border-radius: 0.5rem;
+    transition: all .5s;
+    color: black;
+    font-size: 2rem;
+    position: absolute;
+    bottom: 4%;
+    left: 1.4%;
+
+    &:link {
+        text-decoration: none;
+    }
+
+    &:visited {
+        text-decoration: none;
+    }
+
+}
+
+.admin-show-users > .user-portfolio-container {
+    margin: 0;
+}
+
+.admin-show-users .user-transactions,
+.admin-show-users .user-portfolio {
+    margin: 2.5rem;
+    height: 60vh;
+}
+
+.admin-show-users .user-transactions-action h2 {
+    padding: 0.5rem;
+    font-size: 2rem;
+}
+
+.admin-show-users .transaction-headers,
+.admin-show-users .transaction-details-container {
+    font-size: 1.8rem;
+}
+
+.admin-show-users .transaction-details,
+.admin-show-users .asset-container {
+    padding: 0.5rem 0;
+}
+
+.admin-show-users .user-portfolio-headers {
+    margin-top: 5rem;
+}
+
+.admin-show-users .user-transactions-action {
+    height: 23vh;
+}

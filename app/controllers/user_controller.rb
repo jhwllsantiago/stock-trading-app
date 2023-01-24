@@ -9,15 +9,26 @@ before_action :form_params
     def deposit
         current_user.balance += form_params[:amount].to_f
         current_user.save
+        render partial: "balance", locals: {balance: current_user.balance}, status: :ok
     end
 
     def withdraw
         current_user.balance -= form_params[:amount].to_f
         current_user.save
+        render partial: "balance", locals: {balance: current_user.balance}, status: :ok
     end
 
     def form_params
         params
+    end
+
+    def trade
+    end
+
+    def portfolio
+        @buy_transactions = @user.buyer_transactions
+        @sell_transactions = @user.seller_transactions
+        @assets = @user.assets
     end
 
     def set_user
