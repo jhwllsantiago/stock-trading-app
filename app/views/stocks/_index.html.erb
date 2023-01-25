@@ -35,13 +35,13 @@
           <div class="buy-column-container">
           <div class="buy-column">
           <h1>PRICE</h1>
-          <% @buys.each do |order| %>
+          <% @buys&.each do |order| %>
             <p><%=  order.price %></p>
           <% end %>
           </div>
           <div class="buy-column">
           <h1>QUANTITY</h1>
-          <% @buys.each do |order| %>
+          <% @buys&.each do |order| %>
             <p><%=  order.quantity.floor(4) %></p>
           <% end %>
           </div>
@@ -52,13 +52,13 @@
           <div class="sell-column-container">
             <div class="sell-column">
               <h1>PRICE</h1>
-              <% @sells.each do |order| %>
+              <% @sells&.each do |order| %>
                 <p><%=  order.price %></p>
               <% end %>
             </div>
             <div class="sell-column">
               <h1>QUANTITY</h1> 
-              <% @sells.each do |order| %>
+              <% @sells&.each do |order| %>
                 <p><%=  order.quantity.floor(4) %></p>
               <% end %>
             </div>  

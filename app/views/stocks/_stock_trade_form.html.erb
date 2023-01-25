@@ -33,7 +33,7 @@
         </div>
 
     <% if true %>
-    <h3>Avaiable <%= stock.ticker %> assets: <%= @asset&.quantity&.floor(4) || "0.0" %></h3>
+    <h3>Available <%= stock.ticker %> assets: <%= @asset&.quantity&.floor(4) || "0.0" %></h3>
       <div>
         <div class="stock-frame-sell">
           <%= form_with model: @order, url: sell_order_path(stock.id), method: :post do |form| %>

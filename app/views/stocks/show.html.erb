@@ -47,7 +47,7 @@
   <% if @asset %>
     <div>
     <%= form_with model: @order, url: sell_order_path(@stock.id), method: :post do |form| %>
-      <h3>Avaiable <%= @stock.ticker %> assets: <%= @asset.quantity.floor(4) %></h3>
+      <h3>Available <%= @stock.ticker %> assets: <%= @asset.quantity.floor(4) %></h3>
 
       <div>
         <%= form.label :price, style: "display: block" %>
