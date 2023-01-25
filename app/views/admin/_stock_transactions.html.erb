@@ -11,7 +11,7 @@
         </div>
         <% @transactions.each do |transaction| %>
         <div class="admin-t-transaction-row">
-          <p><%= transaction.seller.email %></p>
+          <p><%= transaction.seller.admin? ? "NONE" : transaction.seller.email %></p>
           <p><%= transaction.buyer.email %></p>
           <p><%= transaction.price %></p>
           <p><%= transaction.quantity %></p>
