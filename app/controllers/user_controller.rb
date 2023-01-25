@@ -2,6 +2,7 @@ class UserController < ApplicationController
     before_action :authenticate_user!
     before_action :set_user 
     before_action :form_params
+    before_action :check_status
 
     def dashboard
     end
@@ -33,8 +34,16 @@ class UserController < ApplicationController
         @assets = @user.assets
     end
 
+    private
+
     def set_user
         @user = current_user
+    end
+
+    def check_status
+        if !@user.approved
+            redirect_to stocks_path
+        end
     end
 
 end

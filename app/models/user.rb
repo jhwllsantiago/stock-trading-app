@@ -10,11 +10,11 @@ class User < ApplicationRecord
   has_many :buyer_transactions, class_name: 'Transaction', foreign_key: 'buyer_id'
   has_many :seller_transactions, class_name: 'Transaction', foreign_key: 'seller_id'
 
-  def active_for_authentication? 
-    super && approved?
-  end 
+  # def active_for_authentication? 
+  #   super && approved?
+  # end 
     
-  def inactive_message 
-    approved? ? super : :not_approved
-  end
+  # def inactive_message 
+  #   approved? ? super : :not_approved
+  # end
 end

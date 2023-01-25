@@ -1,5 +1,8 @@
 
   <div class="stock-frame-container">
+
+  <% if current_user.approved %>
+
     <div>
       <% if stock %>
       <h3>Your Balance: <%= current_user.balance.floor(4).to_s %></h3>
@@ -66,4 +69,12 @@
         <h1>Please choose a stock to trade</h1>
       </div>
       <% end %>
+
+    <% else %>
+      <div>
+        <h1>Trading access is only granted to approved accounts. Please await approval by an administrator.</h1>
+      </div>
+
+    <% end %>
+
   </div>
