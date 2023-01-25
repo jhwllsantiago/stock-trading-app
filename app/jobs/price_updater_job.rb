@@ -11,7 +11,7 @@ class PriceUpdaterJob < ApplicationJob
         quote = client.quote(stock.ticker)
         stock.update(price: quote.latest_price)
         stock.orders.by_admin.each do |order|
-          order.update(price: quote.latest_price)
+          order.update(price: quote.latest_price, quantity: 10000.0, status: 0)
         end
       end
     end
