@@ -18,6 +18,10 @@
     justify-items: center;
 }
 
+.admin-features a {
+    width: 100%;
+}
+
 .admin-features,
 .users-container {
     margin-top: 3rem;
@@ -36,17 +40,11 @@
     align-items: center;
 }
 
+.admin-feature-link,
 .admin-feature span {
     font-size: 2rem;
     color: black;
-}
-
-.admin-feature-link,
-.admin-feature-link:link,
-.admin-feature-link:visited {
     text-decoration: none;
-    color: black;
-    font-size: 2rem;
 }
 
 .feature-icon {

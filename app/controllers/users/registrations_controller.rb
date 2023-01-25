@@ -28,7 +28,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     resource.save
     yield resource if block_given?
     if resource.persisted?
-      if resource.active_for_authentication?
+      if resource.approved
         notice = current_user && current_user.admin? ? :signed_up_through_admin : :signed_up
         set_flash_message! :notice, notice
         sign_up(resource_name, resource) 
@@ -96,7 +96,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    if current_user.admin?
+    if current_user&.admin?
       admin_path
     else
       root_path

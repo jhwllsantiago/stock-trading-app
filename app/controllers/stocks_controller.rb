@@ -4,9 +4,7 @@ class StocksController < ApplicationController
   # GET /stocks or /stocks.json
   def index
     @stocks = Stock.all
-    # @buys = Order.buy.pending.includes(:user).order("users.role")
-    # @sells = Order.sell.pending.includes(:user).order("users.role")
-    @transactions = Transaction.all
+    # @transactions = Transaction.order(created_at: :desc)
   end
 
   # GET /stocks/1 or /stocks/1.json
@@ -19,7 +17,7 @@ class StocksController < ApplicationController
     @stocks = Stock.all
     @buys = @stock.orders.buy.pending.includes(:user).order("users.role")
     @sells = @stock.orders.sell.pending.includes(:user).order("users.role")
-    @transactions = Transaction.all
+    @transactions = Transaction.where(stock_id: @stock.id).order(created_at: :desc)
     @order = Order.new
     @asset = current_user.assets.find_by(stock_id: @stock.id)
     render partial: "index", status: :ok

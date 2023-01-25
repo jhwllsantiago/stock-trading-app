@@ -33,5 +33,5 @@ Rails.application.routes.draw do
   post 'withdraw', to: 'user#withdraw'
   get "admin/transactions", to: "admin#transactions", as: "admin_transactions"
   get "orders", to: "orders#index", as: "orders"
-  patch "orders/cancel/:id", to: "orders#cancel", as: "cancel_order"
+  patch "orders/:id/cancel/:stock_id", to: "orders#cancel", as: "cancel_order"
 end

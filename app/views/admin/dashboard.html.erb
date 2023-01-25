@@ -5,17 +5,19 @@
 
 <div class='admin-features'>
   
-  <%= link_to new_user_registration_path do %>
+  <%= link_to new_user_registration_path, class: 'admin-feature-link' do %>
   <div class='admin-feature add-user-btn'>
     <%= image_tag("add-user.png", :class => "feature-icon") %>
-    <span class='admin-feature-link'><strong>Add User</strong></span>
+    <p><strong>Add User</strong></p>
   </div>
   <% end %>
 
+  <%= link_to admin_transactions_path, class: 'admin-feature-link' do %>
   <div class='admin-feature add-user-btn'>
-    <%= link_to image_tag("logs.png", :class => "feature-icon"), admin_transactions_path %>
-    <strong><%= link_to "Transactions", admin_transactions_path, class: 'admin-feature-link' %></strong>
+    <%= image_tag("logs.png", :class => "feature-icon") %>
+    <p><strong>Transactions</strong></p>
   </div>
+  <% end %>
 
   <div class='admin-feature'>
     <%= image_tag("report.png", :class => "feature-icon") %>

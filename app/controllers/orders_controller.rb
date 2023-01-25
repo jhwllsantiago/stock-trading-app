@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_order, only: %i[ show edit update destroy cancel ]
-  before_action :set_stock, except: %i[ index cancel]
+  before_action :set_stock, except: %i[ index cancel ]
   before_action :set_order_details, only: %i[ buy sell ]
   before_action :set_orders, only: %i[ index cancel ]
 
@@ -125,9 +125,16 @@ class OrdersController < ApplicationController
   
   # PATCH /orders/cancel/:id
   def cancel
-    @order.update(status: 2)
-    current_user.balance += @order.price
-    current_user.save
+    if @order.action == 0
+      @order.update(status: 2)
+      current_user.balance += @order.price
+      current_user.save
+    else
+      @order.update(status: 2)
+      asset = current_user.assets.find_by(stock_id: Stock.find(params[:stock_id]))
+      asset.quantity += @order.quantity
+      asset.save
+    end
     render partial: "order_table", locals: {orders: @orders}, status: :ok
   end
 

@@ -138,3 +138,8 @@
 .admin-show-users .user-asset-container {
     height: 43vh;
 }
+
+.admin-user-portfolio-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
