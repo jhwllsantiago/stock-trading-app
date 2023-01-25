@@ -48,8 +48,25 @@
     </div>
 </div>
 
-<div>
+<div class='user-orders'>
+<div class='portfolio-header-container'>
+    <h1 class='user-portfolio-header'>ORDERS</h1>
+</div>
+
+<div class='user-order-headers'>
+    <span>Action</span>
+    <span>Stock</span>
+    <span>Quantity</span>
+    <span>Price</span>
+    <span>Status</span>
+</div>
+    
+    <div>
+        <hr/>
+    </div>
+    <div class='user-orders-container'>
     <%= render 'orders/order_table', orders: @orders %>
+    </div>
 </div>
 
 <div class='user-portfolio'>

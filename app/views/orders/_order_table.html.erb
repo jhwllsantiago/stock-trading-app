@@ -1,7 +1,7 @@
 <%= turbo_frame_tag "orders_table_frame" do %>
   <div>
     <% orders.each do |order| %>
-      <div>
+      <div class='orders-container'>
         <p><%= order.action.capitalize %></p>
         <p><%= order.stock.ticker %></p>
         <p><%= order.quantity.floor(4) %></p>
