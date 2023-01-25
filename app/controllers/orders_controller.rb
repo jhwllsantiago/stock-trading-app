@@ -1,12 +1,12 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: %i[ show edit update destroy ]
-  before_action :set_stock
   before_action :authenticate_user!
+  before_action :set_order, only: %i[ show edit update destroy ]
+  before_action :set_stock, except: %i[ index cancel]
   before_action :set_order_details, only: %i[ buy sell ]
+  before_action :set_orders, only: %i[ index cancel ]
 
   # GET /orders or /orders.json
   def index
-    @orders = Order.all
   end
 
   # GET /orders/1 or /orders/1.json
@@ -123,6 +123,13 @@ class OrdersController < ApplicationController
     end
   end
   
+  # PATCH /orders/cancel/:id
+  def cancel
+    @order.update(status: 2)
+    current_user.balance += @order.price
+    current_user.save
+    render partial: "order_table", locals: {orders: @orders}, status: :ok
+  end
 
   # PATCH/PUT /orders/1 or /orders/1.json
   def update
@@ -150,6 +157,10 @@ class OrdersController < ApplicationController
   private
     def set_order
       @order = Order.find(params[:id])
+    end
+
+    def set_orders
+      @orders = current_user.orders.order(status: :asc)
     end
 
     def set_stock

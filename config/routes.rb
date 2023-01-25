@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  # resources :stocks do
-  #   resources :orders
-  # end
-
   get "dashboard", to: "user#dashboard"
   get "portfolio", to: "user#portfolio", as: "portfolio"
 
@@ -15,7 +11,6 @@ Rails.application.routes.draw do
     sessions: "users/sessions",
     registrations: "users/registrations"
   }
-
 
   devise_scope :user do
         authenticated :user do
@@ -37,4 +32,6 @@ Rails.application.routes.draw do
   post 'deposit', to: 'user#deposit'
   post 'withdraw', to: 'user#withdraw'
   get "admin/transactions", to: "admin#transactions", as: "admin_transactions"
+  get "orders", to: "orders#index", as: "orders"
+  patch "orders/cancel/:id", to: "orders#cancel", as: "cancel_order"
 end

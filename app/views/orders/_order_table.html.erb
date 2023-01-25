@@ -1,0 +1,18 @@
+<%= turbo_frame_tag "orders_table_frame" do %>
+  <div>
+    <% orders.each do |order| %>
+      <div>
+        <p><%= order.action.capitalize %></p>
+        <p><%= order.stock.ticker %></p>
+        <p><%= order.quantity.floor(4) %></p>
+        <p>USD <%= order.price.floor(4) %></p>
+        <% if order.pending? %>
+          <% link_to "Cancel", cancel_order_path(order.id), data: {"turbo-method": :patch, turbo_frame: "orders_table_frame" }%>
+        <% else %>
+          <p><%= order.status.capitalize %></p>
+        <% end %>
+        
+      </div>
+    <% end %>
+  </div>
+<% end %>
