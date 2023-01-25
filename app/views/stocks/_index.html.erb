@@ -1,0 +1,84 @@
+<%= turbo_frame_tag "stock_index_frame" do %>
+<div class="stock-index-main-container">
+  <nav class="stock-index-nav">
+  <%= image_tag("ai3.png", :class => "stock-index-logo") %>
+  <div class="stock-index-nav-middle">
+    <p>My portfolio</p>
+    <p>|</p>
+    <p>Mutual funds</p>
+    <p>|</p>
+    <p>Support</p>
+    <p>|</p>
+    <p>Media</p>
+  </div >
+  <div class"stock-index-nav-right">
+    <%= button_to "Sign out", destroy_user_session_path, :method => :delete %>
+  </div>
+  </nav>
+
+
+  <div class="stock-index-main">
+    <div class="stock-index-container">
+      <div class="stock-index-table">
+        <div class ="stock-index-name">
+          <h1>STOCK</h1>
+          <% @stocks.each do |stock| %>
+            <%= link_to render("stock_row", stock: stock), stock_turbo_show_path(stock), remote: true, data: {"turbo-method": :get, "turbo_frame": "stock_index_frame"}%>
+          <% end %>
+        </div>
+      </div>
+      <div class="stock-index-order">
+        <h1>ORDER BOOK</h1>
+        <div class="stock-index-order-container">
+        <div class="stock-index-order-buy">
+        <h1>BUY</h1>
+          <div class="buy-column-container">
+          <div class="buy-column">
+          <h1>PRICE</h1>
+          <% @buys&.each do |order| %>
+            <p><%=  order.price %></p>
+          <% end %>
+          </div>
+          <div class="buy-column">
+          <h1>QUANTITY</h1>
+          <% @buys&.each do |order| %>
+            <p><%=  order.quantity.floor(4) %></p>
+          <% end %>
+          </div>
+        </div>
+        </div>
+        <div class="stock-index-order-sell">
+        <h1>SELL</h1>
+          <div class="sell-column-container">
+            <div class="sell-column">
+              <h1>PRICE</h1>
+              <% @sells&.each do |order| %>
+                <p><%=  order.price %></p>
+              <% end %>
+            </div>
+            <div class="sell-column">
+              <h1>QUANTITY</h1> 
+              <% @sells&.each do |order| %>
+                <p><%=  order.quantity.floor(4) %></p>
+              <% end %>
+            </div>  
+          </div>
+        </div>
+      </div>
+
+
+  </div>
+  <div class='stock-index-trade-order'>
+    <div class="stock-trade-container">
+      <%= render "stock_trade_form", stock: @stock %>
+    </div>
+
+    <div class="transactions-container">
+      <%= render "stock_transactions", transaction: @transactions %>
+    </div>
+  </div>
+
+  </div>
+</div>
+
+<% end %>

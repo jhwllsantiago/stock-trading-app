@@ -1,0 +1,25 @@
+<%= form_with(url: deposit_path, method: :post) do |form| %>
+
+  <%= render 'bank_form_nav' %>
+
+<div class='bank-form'>
+  <h1>Deposit</h1>
+
+  <div class='bank-form-details'>
+    <div class='bank-balance'>
+      Balance: <%= render 'balance', balance: current_user.balance.floor(4) %>
+    </div>
+
+    <div class='bank-amount'>
+    <div>
+      <%= form.number_field :amount, placeholder: "Enter amount", class: 'bank-form-amount' %>
+    </div>
+
+    <div class='bank-form-save'>
+      <%= form.submit 'Save', data: {"turbo-method": :post, turbo_frame: "dashboard_frame" } %>
+    </div>
+    </div>
+  </div>
+</div>
+
+<% end %>

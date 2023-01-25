@@ -1,0 +1,56 @@
+<%= turbo_frame_tag "dashboard_frame" do %>
+<div class='user-dashboard'>
+<%= render 'user_nav' %>
+
+<div class='user-features'>
+
+  <div class='user-feature'>
+    <strong><%= link_to 'Deposit', nil, remote: true,
+      data: {
+        controller: "bank",
+        action: "bank#deposit",
+        bank_form_param: "new-deposit-form",
+        bank_backdrop_param: "new-bank-backdrop"
+      } %></strong>
+  </div>
+
+  <div class='user-feature'>
+    <strong><%= link_to 'Withdraw', nil, remote: true,
+      data: {
+        controller: "bank",
+        action: "bank#withdraw",
+        bank_form_param: "new-withdraw-form",
+        bank_backdrop_param: "new-bank-backdrop"
+      } %></strong>
+  </div>
+
+  <div class='user-feature'>
+    <strong><%= link_to 'Trade', stocks_path %></strong>
+  </div>
+
+  <div class='user-feature'>
+    <strong><%= link_to 'Portfolio', portfolio_path %></strong>
+  </div>
+
+  <div id="new-deposit-form" class="d-none new-bank-form">
+    <%= render 'user/deposit_form'%>
+  </div>
+
+  <div id="new-withdraw-form" class="d-none new-bank-form">
+    <%= render 'user/withdraw_form'%>
+  </div>
+
+</div>
+
+<%= link_to "", nil, remote: true, class: "d-none new-bank-backdrop", id: 'new-bank-backdrop',
+  data: {
+    controller: "bank",
+    action: "bank#hideForm",
+    bank_form_param: "new-bank-form",
+    bank_backdrop_param: "new-bank-backdrop"
+  } %>
+
+</div>
+
+
+<% end %>

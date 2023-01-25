@@ -1,0 +1,22 @@
+
+<div class="admin-t-transactions-container">
+      <h1>TRANSACTIONS</h1>
+      <div class="admin-t-transaction-details">
+        <div class="admin-t-transaction-details-header">
+          <h3>SELLER</h3>
+          <h3>BUYER</h3>
+          <h3>PRICE</h3>
+          <h3>QUANTITY</h3>
+          <h3>ORDERED</h3>
+        </div>
+        <% @transactions.each do |transaction| %>
+        <div class="admin-t-transaction-row">
+          <p><%= transaction.seller.admin? ? "NONE" : transaction.seller.email %></p>
+          <p><%= transaction.buyer.email %></p>
+          <p><%= transaction.price %></p>
+          <p><%= transaction.quantity %></p>
+          <p><%= transaction.created_at.strftime("%H:%M:%S %a %m, %e") %></p>
+        </div>
+      <% end %>
+      </div>
+  </div>

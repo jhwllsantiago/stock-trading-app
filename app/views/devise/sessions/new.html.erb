@@ -1,26 +1,186 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class=" container landing-page">
+  <nav class="navbar fixed-top navbar-expand-md">
+    <div class="container-fluid nav-container">
+      <div class="container-fluid nav-items-left">
+        <p>TRADE</p>
+        <p>FINANCE</p>
+        <p>PRICES</p>
+        <p>ADVISORY</p>
+      </div>
+      <div class="container-fluid nav-logo-container">
+        <p><strong>ATLAS</strong></p>
+        <%= image_tag("ai3.png", :class => "nav-logo") %>
+        <p class="index"><strong>INDEX</strong></p>
+      </div>
+      <div class="nav-items-right">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => 'login-form', 'target' => 'login'}) do |f| %>
+        <div class="nav-login">
+          <div class="nav-login-input">
+            <div class="field">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </div>
+            <div class="field">
+              <%= f.label :password %><br />
+              <%= f.password_field :password, autocomplete: "current-password" %>
+            </div>
+            <div class="actions">
+              <%= f.submit "Log in" %>
+            </div>
+          </div>
+          <div class="nav-login-actions">
+            <% end %>
+          </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  </nav>
+  <main class="container-fluid main-container">
+    <%= video_tag("analysis.mp4", :class => "bg-video", :autoplay => true, :loop => true, :muted => 'muted') %>
+    <div class="container-fluid stock-container">
+    <div class='stock-name-container'>
+      <h1>NAME</h1>
+      <div class="stock-name">
+        <%= image_tag("apple.png", :class => "stock-logo") %>
+        <div>
+          <h2>Apple</h2>
+          <p>AAPL</p>
+        </div>
+      </div>
+      <div class="stock-name">
+        <%= image_tag("msft.png", :class => "stock-logo") %>
+        <div>
+          <h2>Microsoft</h2>
+          <p>MSFT</p>
+        </div>
+      </div>
+      <div class="stock-name">
+        <%= image_tag("google.png", :class => "stock-logo") %>
+        <div>
+          <h2>Google</h2>
+          <p>GOOG</p>
+        </div>
+      </div>
+      <div class="stock-name">
+        <%= image_tag("amazon.png", :class => "stock-logo") %>
+        <div>
+          <h2>Amazon</h2>
+          <p>AMZN</p>
+        </div>
+      </div>
+      <div class="stock-name">
+        <%= image_tag("visa3.png", :class => "stock-logo visa") %>
+        <div>
+          <h2>Visa</h2>
+          <p>V</p>
+        </div>
+      </div>
+    </div>
+    <div class="stock-price-container">
+      <h1>PRICE</h1>
+      <h2>$126.36</h2>
+      <h2>$229.10</h2>
+      <h2>$88.71</h2>
+      <h2>$85.41</h2>
+      <h2>$212.61</h2>
+    </div>
+    <div class="stock-cap-container">
+      <h1>MARKET CAP</h1>
+      <h2>$2.088T</h2>
+      <h2>$1.709T</h2>
+      <h2>$1.132T</h2>
+      <h2>$868.57B</h2>
+      <h2>$450.22B</h2>
+    </div>
+    <div class="main-cta">
+        <div class='main-cta-left'>
+          <div>
+            <p>ATLAS</p>
+            <%= image_tag("ai3.png", :class => "main-cta-logo") %>
+            <p>INDEX</p>
+          </div>
+        </div>
+        <div class='main-cta-right'>
+            <div>
+              <h1>Discover our commission-free stock trading platform and get 1 free stock share welcome bonus</h1>
+            </div>
+            <div>
+              <p>*Welcome bonus only applicable to new users</p>
+            </div>
+            <button>
+              <%= link_to "Sign Up", new_user_registration_path%>
+            </button>
+      </div>
+    </div>
   </div>
-<% end %>
+  </main>
+  <footer class="container-fluid footer-container">
+    <div class="footer-item">
+      <div class="footer-item-links">
+        <h2>ABOUT US</h2>
+        <p>About</p>
+        <p>Legal</p>
+        <p>Careers</p>
+        <p>Terms and privacy</p>
+      </div>
+      <div class="footer-item-links">
+        <h2>SERVICES</h2>
+        <p>Exchange</p>
+        <p>Trade</p>
+        <p>OTC</p>
+      </div>
+      <div class="footer-item-links">
+        <h2>SUPPORT</h2>
+        <p>Help Desk</p>
+        <p>FAQs</p>
+        <p>Feedback</p>
+      </div>
+      <div class="footer-item-links">
+        <h2>SUBSIDIARIES</h2>
+        <p>ViCash</p>
+        <p>7-Evelyn</p>
+        <p>McJolliKing</p>
+      </div>
+      <div class="footer-item-links">
+        <h2>RESOURCES</h2>
+        <p>Prices</p>
+        <p>Blog</p>
+        <p>Press</p>
+      </div>
+    </div>
 
-<%= render "devise/shared/links" %>
+    <div class="footer-media">
+      <div class="footer-separator">
+        <h2>STAY CONNECTED</h2>
+        <p>SIGN UP FOR THE LATEST NEWS AND UPDATES</p>
+        <div class="footer-email">
+          <input type="email" placeholder="Email"/>
+          <button>
+            <%= image_tag("send.png", :class => "send-logo") %>
+          </button>
+        </div>
+      </div>
+
+      <div class="footer-separator">
+        <h2>FOLLOW US</h2>
+        <div class="footer-socials">
+          <%= image_tag("facebook.png", :class => "social-logo") %>
+          <%= image_tag("instagram.png", :class => "social-logo") %>
+          <%= image_tag("twitter.png", :class => "social-logo") %>
+          <%= image_tag("youtube.png", :class => "social-logo") %>
+        </div>
+        <h2>CONTACT US</h2>
+        <div class="footer-contact">
+          <div class="footer-contact-detail">
+            <%= image_tag("telephone.png", :class => "contact-logo") %>
+            <p>+639123442069</p>
+          </div>
+          <div class="footer-contact-detail">
+            <%= image_tag("email.png", :class => "contact-logo") %>
+            <p>support@atlasindex.com</p> 
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+</div>

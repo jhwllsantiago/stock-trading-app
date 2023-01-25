@@ -1,15 +1,78 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @stock %>
-<p>There are <span><%= @stock_buy.count %></span> Buy orders for this stock</p>
-<% @stock_buy.each do |order| %>
-  <span><%= order.quantity %></span>
+<h1><%= @stock.ticker %></h1>
+<h2><%= @stock.company %></h2>
+<h3>USD <%= @stock.price %></h3>
+<p>There are <span><%= @stock.orders.buy.pending.count %></span> Buy orders for this stock</p>
+<% @stock.orders.buy.pending.each do |order| %>
+  <span>Order No.: <%= order.id %></span>
+  <span>Offer: USD <%= order.price %></span>
+  <span>Qt: <%= order.quantity %></span>
 <% end %>
 
-<p>There are <span><%= @stock_sell.count %></span> Sell orders for this stock</p>
-<% @stock_sell.each do |order| %>
-  <span><%= order.quantity %></span>
+<p>There are <span><%= @stock.orders.sell.pending.count %></span> Sell orders for this stock</p>
+<% @stock.orders.sell.pending.each do |order| %>
+  <span>Order No.: <%= order.id %></span>
+  <span>Asking: USD <%= order.price %></span>
+  <span>Qt: <%= order.quantity %></span>
 <% end %>
+
+<div style="display: flex; padding: 20px;">
+  <div>
+  <%= form_with model: @order, url: buy_order_path(@stock.id), method: :post do |form| %>
+    <h3>Your Balance: <%= current_user.balance.floor(4) %></h3>
+
+    <div>
+      <%= form.label :price, style: "display: block" %>
+      <%= form.number_field :price, value: @stock.price, step: :any %>
+    </div>
+    
+    <div>
+      <%= form.submit "Buy #{@stock.ticker}" %>
+    </div>
+  <% end %>
+  <br>
+  <%= form_with model: @order, url: buy_order_path(@stock.id), method: :post do |form| %>
+    <div>
+      <%= form.label :quantity, style: "display: block" %>
+      <%= form.number_field :quantity, step: :any, placeholder: "Max #{(current_user.balance/@stock.price).floor(4)} units" %>
+    </div>
+
+    <div>
+      <%= form.submit "Buy #{@stock.ticker}" %>
+    </div>
+  <% end %>
+  </div>
+
+  <% if @asset %>
+    <div>
+    <%= form_with model: @order, url: sell_order_path(@stock.id), method: :post do |form| %>
+      <h3>Available <%= @stock.ticker %> assets: <%= @asset.quantity.floor(4) %></h3>
+
+      <div>
+        <%= form.label :price, style: "display: block" %>
+        <%= form.number_field :price, step: :any, placeholder: "Max USD #{(@asset.quantity * @stock.price).floor(4)}" %>
+      </div>
+
+      <div>
+        <%= form.submit "Sell #{@stock.ticker}" %>
+      </div>
+    <% end %>
+    <br>
+    <%= form_with model: @order, url: sell_order_path(@stock.id), method: :post do |form| %>
+      <div>
+        <%= form.label :quantity, style: "display: block" %>
+        <%= form.number_field :quantity, step: :any, value: @asset.quantity.floor(4) %>
+      </div>
+
+      <div>
+        <%= form.submit "Sell #{@stock.ticker}" %>
+      </div>
+    <% end %> 
+    </div> 
+  <% end %>
+  
+</div>
 
 <div>
   <%= link_to "Back to stocks", stocks_path %>

@@ -1,0 +1,80 @@
+<div class='admin-show-users'>
+
+<%= render "user_nav" %>
+
+<%= render "user" %>
+
+<div class='admin-user-portfolio-container'>
+
+<div class='user-transactions'>
+
+<div class='portfolio-header-container'>
+    <h1 class='user-portfolio-header'>TRANSACTIONS</h1>
+</div>
+
+    <div class='user-transactions-container'>
+
+    <div class='user-transactions-action'>
+    <h2>BUY</h2>
+    <div class='transaction-headers'>
+        <span>Stock</span>
+        <span>Price</span>
+        <span>Quantity</span>
+    </div>
+    <div>
+        <hr/>
+    </div>
+        <div class='transactions-details-container'>
+            <%= render 'user/buy_transaction' %>
+        </div>
+    </div>
+
+    <div>
+        <hr/>
+    </div>
+
+    <div class='user-transactions-action'>
+    <h2>SELL</h2>
+    <div class='transaction-headers'>
+        <span>Stock</span>
+        <span>Price</span>
+        <span>Quantity</span>
+    </div>
+    <div>
+        <hr/>
+    </div>
+        <div class='transactions-details-container'>
+            <%= render 'user/sell_transaction' %>
+        </div>
+    </div>
+
+    </div>
+</div>
+
+<div class='user-portfolio'>
+
+<div class='portfolio-header-container'>
+    <h1 class='user-portfolio-header'>PORTFOLIO</h1>
+</div>
+
+<div class='user-portfolio-headers'>
+    <span>Stock</span>
+    <span>Quantity</span>
+</div>
+    
+    <div>
+        <hr/>
+    </div>
+
+    <div class='user-asset-container'>
+        <%= render 'user/asset' %>
+    </div>
+</div>
+
+</div>
+
+<div class='back-btn'>
+<%= link_to "Back", :back %>
+</div>
+
+</div>

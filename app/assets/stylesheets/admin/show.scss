@@ -1,0 +1,145 @@
+.admin-show-users {
+    background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("signup.jpg");
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+}
+
+.user-dp {
+    height: 18rem;
+}
+
+.user-profile-container {
+    margin-top: 3rem;
+    margin-left: 3rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    width: 47%;
+    justify-content: space-around;
+    border: 2px solid #1ED1A8;
+    border-radius: 2rem;
+    color: #b0b0b0;
+    background-color: #3D3A4B;
+}
+
+.user-profile {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: auto;
+    justify-content: space-evenly;
+    margin-left: 1.5rem;
+}
+
+.user-profile-name {
+    font-size: 3rem;
+}
+
+.user-profile-email,
+.user-profile-balance {
+    font-size: 1.35rem;
+}
+
+.show-user-actions {
+    display: flex;
+    column-gap: 2rem;
+    margin-top: 2rem;
+}
+
+.delete-user-btn {
+    border: none;
+    background-color: transparent;
+    font-size: 1.35rem;
+    cursor: pointer;
+}
+
+.show-user-actions > * {
+    cursor: pointer;
+    padding: 0.75rem 2rem;
+    background-color: #1ED1A8;
+    border-radius: 0.5rem;
+    transition: all .5s;
+    color: black;
+    font-size: 1.35rem;
+
+    &:link {
+        text-decoration: none;
+    }
+
+    &:visited {
+        text-decoration: none;
+    }
+    
+    &:hover {
+        transform: scale(1.1);
+      }
+}
+
+.back-btn a {
+    cursor: pointer;
+    padding: 0.75rem 2rem;
+    background-color: #1ED1A8;
+    border-radius: 0.5rem;
+    transition: all .5s;
+    color: black;
+    font-size: 2rem;
+    position: absolute;
+    bottom: 4%;
+    left: 1.4%;
+
+    &:link {
+        text-decoration: none;
+    }
+
+    &:visited {
+        text-decoration: none;
+    }
+
+}
+
+.admin-show-users > .user-portfolio-container {
+    margin: 0;
+}
+
+.admin-show-users .user-transactions,
+.admin-show-users .user-portfolio {
+    margin: 2.5rem;
+    height: 60vh;
+}
+
+.admin-show-users .user-transactions-action h2 {
+    padding: 0.5rem;
+    font-size: 2rem;
+}
+
+.admin-show-users .transaction-headers,
+.admin-show-users .transactions-details-container {
+    font-size: 1.8rem;
+}
+
+.admin-show-users .transactions-details,
+.admin-show-users .asset-container {
+    padding: 0.5rem 0;
+}
+
+.admin-show-users .user-portfolio-headers {
+    margin-top: 5rem;
+}
+
+.admin-show-users .user-transactions-action {
+    height: 23vh;
+}
+
+.admin-show-users .transactions-details-container {
+    height: 18vh;
+}
+
+.admin-show-users .user-asset-container {
+    height: 43vh;
+}
+
+.admin-user-portfolio-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
