@@ -31,6 +31,22 @@
   overflow: auto
  }
 
+.text-decoration-none, 
+.text-decoration-none:visited {
+  text-decoration: none;
+}
+
+.text-success {
+  width: 100vw;
+  position: fixed;
+  color: #1ED1A8;
+  background-color: #1d1b23eb;
+  padding: 3rem 0;
+  text-align: center;
+  font-size: 2rem;
+  z-index: 99999;
+}
+
  @media screen and (max-width: 116.25em) {
   html {
     font-size: 55%;
