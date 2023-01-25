@@ -7,7 +7,7 @@
         <p><%= order.quantity.floor(4) %></p>
         <p>USD <%= order.price.floor(4) %></p>
         <% if order.pending? %>
-          <% link_to "Cancel", cancel_order_path(order.id), data: {"turbo-method": :patch, turbo_frame: "orders_table_frame" }%>
+          <%= link_to "Cancel", cancel_order_path(order.id), data: {"turbo-method": :patch, turbo_frame: "orders_table_frame" }%>
         <% else %>
           <p><%= order.status.capitalize %></p>
         <% end %>

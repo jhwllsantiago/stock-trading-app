@@ -32,6 +32,7 @@ class UserController < ApplicationController
         @buy_transactions = @user.buyer_transactions
         @sell_transactions = @user.seller_transactions
         @assets = @user.assets
+        @orders = @user.orders.order(status: :asc)
     end
 
     private

@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_order, only: %i[ show edit update destroy ]
+  before_action :set_order, only: %i[ show edit update destroy cancel ]
   before_action :set_stock, except: %i[ index cancel]
   before_action :set_order_details, only: %i[ buy sell ]
   before_action :set_orders, only: %i[ index cancel ]
