@@ -1,24 +1,10 @@
-# README
+# stock trading app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# USAGE
+# Get an API Token
+Create an account on [IEX Cloud](https://iexcloud.io/) and get a publishable token and a secret token from the IEX cloud console.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Setup environment variables
+Create an .env file and assign your API keys to the following variables
+IEX_API_PUBLISHABLE_TOKEN="your publishable token"
+IEX_API_SECRET_TOKEN="your secret token"
